@@ -1,84 +1,97 @@
-# Turborepo starter
+# Next.js & HeroUI Template
 
-This Turborepo starter is maintained by the Turborepo core team.
+This is a template for creating applications using Next.js 14 (pages directory) and HeroUI (v2).
 
-## Using this example
+[Try it on CodeSandbox](https://githubbox.com/heroui-inc/next-pages-template)
 
-Run the following command:
+> Note: Since Next.js 14, the pages router is recommend migrating to the [new App Router](https://nextjs.org/docs/app) to leverage React's latest features
+>
+> Read more: [Pages Router](https://nextjs.org/docs/pages)
 
-```sh
-npx create-turbo@latest
+## Technologies Used
+
+- [Next.js 14](https://nextjs.org/docs/getting-started)
+- [HeroUI](https://heroui.com)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Tailwind Variants](https://tailwind-variants.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [Framer Motion](https://www.framer.com/motion)
+- [next-themes](https://github.com/pacocoursey/next-themes)
+
+## How to Use
+
+To create a new project based on this template using `create-next-app`, run the following command:
+
+```bash
+npx create-next-app -e https://github.com/heroui-inc/next-pages-template
 ```
 
-## What's inside?
+### Install dependencies
 
-This Turborepo includes the following packages/apps:
+You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```bash
+npm install
 ```
 
-### Develop
+### Run the development server
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
+```bash
+npm run dev
 ```
 
-### Remote Caching
+### Setup pnpm (optional)
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```bash
+public-hoist-pattern[]=*@heroui/*
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## Expose Locally Running App Online with ngrok
+
+To make your local app accessible online:
+
+1. Install ngrok if you haven't:
+   ```bash
+   npm install -g ngrok
+   ```
+2. Start your Next.js dev server:
+   ```bash
+   npm run dev
+   ```
+3. Authenticate ngrok (only needed once):
+   ```bash
+   ngrok config add-authtoken <NGROK_AUTHTOKEN>
+   ```
+4. Expose your local server (default Next.js port is 3000):
+   ```bash
+   ngrok http 3000
+   ```
+5. Use the HTTPS URL shown in the ngrok output (e.g. `https://xxxx.ngrok-free.app`) as your public endpoint.
+
+## ACS (Assertion Consumer Service) URL
+
+If you are integrating with a SAML identity provider, your ACS URL is typically:
 
 ```
-npx turbo link
+http://localhost:3000/api/auth/saml/callback
 ```
 
-## Useful Links
+If you are exposing your app via ngrok, replace `localhost:3000` with your ngrok HTTPS URL. For example:
 
-Learn more about the power of Turborepo:
+```
+https://xxxx.ngrok-free.app/api/auth/saml/callback
+```
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+If you have a reserved domain on ngrok, use your reserved domain in the ACS URL. For example, if your reserved domain is `myapp.ngrok.app`:
+
+```
+https://myapp.ngrok.app/api/auth/saml/callback
+```
+
+## License
+
+Licensed under the [MIT license](https://github.com/heroui-inc/next-pages-template/blob/main/LICENSE).

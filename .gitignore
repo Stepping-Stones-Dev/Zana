@@ -15,6 +15,9 @@ node_modules
 # Testing
 coverage
 
+# Certificates
+certs/*.pem
+
 # Turbo
 .turbo
 

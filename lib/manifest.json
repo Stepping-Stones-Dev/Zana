@@ -1,0 +1,4 @@
+[
+  { "name": "service1", "url": "https://cdn.example.com/service1/remoteEntry.js", "module": "./Widget" },
+  { "name": "service2", "url": "https://cdn.example.com/service2/remoteEntry.js", "module": "./Panel" }
+]
