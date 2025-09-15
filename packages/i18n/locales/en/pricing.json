@@ -1,0 +1,421 @@
+{
+  "pricing": {
+    "checkout": {
+  "back": "Back",
+      "email": "Email",
+      "paypalEmail": "PayPal Email",
+      "emailPlaceholder": "you@example.com",
+      "paypalPlaceholder": "you@paypal.com",
+      "phoneLabel": "Phone (Mobile Money)",
+      "phonePlaceholder": "07XXXXXXXX or +2547XXXXXXX",
+      "cardName": "Cardholder Name",
+      "cardNamePlaceholder": "Name on card",
+      "cardNumber": "Card Number",
+      "cardNumberPlaceholder": "1234 5678 9012 3456",
+      "cardExpiry": "Expiry",
+      "cardExpiryPlaceholder": "MM/YY",
+      "cardCvc": "CVC",
+      "cardCvcPlaceholder": "CVC",
+      "cardPreviewNote": "Card payments are not live yet; fields are for preview.",
+      "billingDirectDebit": "Billing via Direct Debit",
+      "provider": {
+        "mobileMoney": "Mobile Money",
+        "card": "Card",
+        "paypal": "PayPal"
+      },
+  "pesapalButton": "Pay with Pesapal",
+      "autoChargeNote": "We’ll auto-charge this provider on each renewal.",
+  "payNow": "Pay now",
+  "otherInformation": "Other information",
+  "businessPurchase": "I’m purchasing as a business",
+  "orderSummary": "Order summary",
+  "orderSummaryAria": "Order summary",
+  "subtotal": "Subtotal",
+  "taxes": "Taxes",
+  "taxesTbd": "Calculated at checkout",
+  "totalDue": "Total due",
+  "vatPercent": "VAT ({{percent}}%)",
+  "legal": "By clicking Pay now, you agree to the Terms of Service and Privacy Policy.",
+  "payFormAria": "Payment form",
+  "legalTrial": "Free 30-day trial: Your subscription will begin immediately and renew automatically at the end of the 30-day trial unless you cancel. By proceeding, you authorize us to store your payment details and to automatically charge the applicable subscription amount (including taxes) on a recurring basis until you cancel. You may cancel at any time from your account settings.",
+      "paypalDisabled": "Pay with PayPal (consent required)",
+      "consent": {
+        "accountEmails": "I agree to receive essential account and transactional emails (e.g., receipts, service notices).",
+        "marketingEmails": "I would like to receive product updates and marketing emails (optional).",
+        "termsPrefix": "I have read and agree to the",
+        "termsLink": "Terms of Service",
+        "and": "and",
+        "privacyLink": "Privacy Policy",
+        "requiredNote": "Please accept the required consents to continue."
+      }
+    },
+    "title": "Pricing",
+    "choosePlan": "Choose your plan.",
+    "startTrial": "Start with a free trial for any plan. Upgrade anytime.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "mostPopular": "Most Popular",
+    "buy": "Buy {{plan}}",
+    "ariaBilling": "Billing period",
+    "billed": "billed {{period}}",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "save": "Save {{amount}}",
+    "planSuffix": "Plan",
+    "processing": "Processing…",
+    "payment": {
+      "requestSent": "Request sent. Check your phone to approve the payment.",
+      "failed": "Payment failed"
+    },
+    "currency": "KES",
+    "plans": {
+      "standard": {
+        "name": "Standard",
+        "blurb": "For individuals and small schools starting out.",
+        "users": "1 user"
+      },
+      "pro": {
+        "name": "Pro",
+        "blurb": "For growing teams that need automation.",
+        "users": "Up to 5 users"
+      },
+      "org": {
+        "name": "Organization",
+        "blurb": "For larger schools and organizations.",
+        "users": "Up to 25 users"
+      }
+    },
+    "matrix": {
+      "labels": {
+        "cost": "Cost",
+        "targetAudience": "Target audience",
+        "studentRegistration": "Student registration",
+        "discipline": "Discipline and behavior tracking",
+        "promotionWorkflows": "Student promotion workflows",
+        "studentAttendance": "Daily student attendance",
+        "staffAttendance": "Staff attendance",
+        "examResults": "Exam results",
+        "gradingScales": "Custom grading scales",
+        "performanceDashboards": "Performance dashboards",
+        "predictiveAlerts": "Predictive alerts for at-risk students",
+        "mobileAccess": "Mobile app access",
+        "pushNotifications": "Push notifications",
+        "parentTeacherCommunication": "Parent and teacher communication",
+        "feeStructures": "Fee structures and billing",
+        "mpesa": "M-Pesa and mobile money",
+        "payroll": "Payroll for staff",
+        "hostelTransport": "Hostel and transport fee integration",
+        "financeForecasting": "Finance forecasting",
+        "bulkSms": "Bulk SMS",
+        "emailIntegration": "Email integration",
+        "inAppChat": "In-app chat",
+        "automatedReminders": "Automated reminders for fees and exams",
+        "attendanceAnalytics": "Attendance analytics",
+        "examAnalytics": "Exam analytics",
+        "financeDashboards": "Finance dashboards",
+        "customReportBuilder": "Custom report builder",
+        "staffRecords": "Staff records",
+        "staffPortal": "Staff portal for training",
+        "staffAppraisals": "Staff appraisals and KPIs",
+        "leaveManagement": "Leave management",
+        "library": "Library management",
+        "hostel": "Hostel and dormitory management",
+        "inventory": "Inventory and asset management",
+        "transport": "Transport management",
+        "cafeteria": "Cafeteria and canteen billing",
+        "clubs": "Extracurricular and club management",
+        "cloudDeployment": "Cloud deployment",
+        "offlineAccess": "Offline access",
+        "curriculumLocalization": "Curriculum localization",
+        "multiSchoolDashboards": "Multi-school dashboards",
+        "apiIntegrations": "API integrations",
+        "customerSupport": "Customer support",
+        "training": "Training",
+        "dataMigration": "Data migration"
+      },
+      "values": {
+        "cost": {
+          "standard": "See pricing panel",
+          "pro": "See pricing panel",
+          "proPlus": "Contact us for pricing"
+        },
+        "targetAudience": {
+          "standard": "Mid-size schools with 200 to 1,000 students",
+          "pro": "Large private and international schools",
+          "proPlus": "School groups, NGOs, and ministries"
+        },
+        "promotionWorkflows": {
+          "standard": "Basic promotion workflows",
+          "pro": "Automated student promotion workflows",
+          "proPlus": "Organization-wide promotion policies"
+        },
+        "studentRegistration": {
+          "standard": "Full profiles including medical, guardians, and discipline",
+          "pro": "Includes transfers, promotions, and graduation",
+          "proPlus": "Multi-campus student synchronization"
+        },
+        "discipline": {
+          "standard": "Discipline tracking",
+          "pro": "Advanced logs",
+          "proPlus": "Centralized across campuses"
+        },
+        "studentAttendance": {
+          "standard": "Mobile attendance",
+          "pro": "Smart timetabling and conflict detection",
+          "proPlus": "Enterprise scheduling across campuses"
+        },
+        "staffAttendance": {
+          "standard": "Staff attendance",
+          "pro": "Advanced staff attendance",
+          "proPlus": "Enterprise staff attendance"
+        },
+        "timetableBuilder": {
+          "standard": "Drag and drop",
+          "pro": "Automatic teacher assignment",
+          "proPlus": "Multi-school scheduling"
+        },
+        "examResults": {
+          "standard": "Automated report cards",
+          "pro": "Trend dashboards",
+          "proPlus": "Predictive performance analytics"
+        },
+        "gradingScales": {
+          "standard": "Default grading scales",
+          "pro": "Custom grading scales",
+          "proPlus": "Advanced multi-curriculum scales"
+        },
+        "performanceDashboards": {
+          "standard": "Basic dashboards",
+          "pro": "Performance dashboards",
+          "proPlus": "Advanced performance dashboards"
+        },
+        "predictiveAlerts": {
+          "standard": "Not included",
+          "pro": "Predictive alerts for at-risk students",
+          "proPlus": "AI-driven predictive alerts"
+        },
+        "mobileAccess": {
+          "standard": "Dashboards",
+          "pro": "Fees and performance view",
+          "proPlus": "Analytics and multilingual support"
+        },
+        "pushNotifications": {
+          "standard": "Push notifications",
+          "pro": "Push notifications",
+          "proPlus": "Automated workflows"
+        },
+        "parentTeacherCommunication": {
+          "standard": "Portal messages",
+          "pro": "In-app chat",
+          "proPlus": "Priority channels and video integration"
+        },
+        "feeStructures": {
+          "standard": "Invoices and arrears",
+          "pro": "Scholarships and discounts",
+          "proPlus": "Multi-school finance dashboard"
+        },
+        "mpesa": {
+          "standard": "M-Pesa and mobile money",
+          "pro": "Advanced reconciliation",
+          "proPlus": "Integration with ERP and payroll"
+        },
+        "payroll": {
+          "standard": "Not included",
+          "pro": "Payroll management",
+          "proPlus": "Enterprise payroll"
+        },
+        "hostelTransport": {
+          "standard": "Not included",
+          "pro": "Hostel and transport fees",
+          "proPlus": "Advanced hostel and transport"
+        },
+        "financeForecasting": {
+          "standard": "Not included",
+          "pro": "Basic forecasting",
+          "proPlus": "Finance forecasting"
+        },
+        "bulkSms": {
+          "standard": "Bulk SMS",
+          "pro": "Bulk SMS",
+          "proPlus": "Bulk SMS"
+        },
+        "emailIntegration": {
+          "standard": "Email integration",
+          "pro": "Email integration",
+          "proPlus": "Email integration"
+        },
+        "inAppChat": {
+          "pro": "In-app chat",
+          "proPlus": "Advanced in-app chat"
+        },
+        "automatedReminders": {
+          "standard": "Automated reminders",
+          "pro": "Automated reminders",
+          "proPlus": "Automated reminders"
+        },
+        "attendanceAnalytics": {
+          "standard": "Attendance analytics",
+          "pro": "Advanced dashboards",
+          "proPlus": "Predictive and comparative analytics"
+        },
+        "examAnalytics": {
+          "standard": "Exam analytics",
+          "pro": "Exam analytics",
+          "proPlus": "Advanced exam analytics"
+        },
+        "financeDashboards": {
+          "standard": "Basic finance dashboards",
+          "pro": "Advanced finance dashboards",
+          "proPlus": "Predictive dashboards and forecasting"
+        },
+        "customReportBuilder": {
+          "pro": "Custom report builder",
+          "proPlus": "Full access to custom reports"
+        },
+        "staffRecords": {
+          "standard": "Basic HR information",
+          "pro": "Full HR and payroll",
+          "proPlus": "Enterprise HR with appraisals"
+        },
+        "staffPortal": {
+          "pro": "Training and resource access",
+          "proPlus": "Learning pathways and certification"
+        },
+        "staffAppraisals": {
+          "pro": "Staff appraisals and KPIs",
+          "proPlus": "Advanced performance reviews"
+        },
+        "leaveManagement": {
+          "pro": "Leave management",
+          "proPlus": "Leave management"
+        },
+        "library": {
+          "pro": "Library management",
+          "proPlus": "Library management"
+        },
+        "hostel": {
+          "pro": "Hostel and dormitory management",
+          "proPlus": "Hostel and dormitory management"
+        },
+        "inventory": {
+          "pro": "Inventory and asset management",
+          "proPlus": "Advanced inventory and asset management"
+        },
+        "transport": {
+          "pro": "Routes and fees",
+          "proPlus": "GPS tracking and parent alerts"
+        },
+        "cafeteria": {
+          "pro": "Cafeteria and canteen billing",
+          "proPlus": "Advanced cafeteria billing"
+        },
+        "clubs": {
+          "pro": "Extracurricular and club management",
+          "proPlus": "Extracurricular and club management"
+        },
+        "cloudDeployment": {
+          "freemium": "Cloud deployment",
+          "standard": "Cloud deployment",
+          "pro": "Cloud deployment",
+          "proPlus": "Enterprise-grade cloud deployment"
+        },
+        "offlineAccess": {
+          "standard": "Attendance and exams offline",
+          "pro": "Full offline capability",
+          "proPlus": "Multi-school offline synchronization"
+        },
+        "curriculumLocalization": {
+          "standard": "Curriculum localization",
+          "pro": "Curriculum localization",
+          "proPlus": "Multi-curricula support"
+        },
+        "multiSchoolDashboards": {
+          "proPlus": "Multi-school dashboards"
+        },
+        "apiIntegrations": {
+          "pro": "API integrations",
+          "proPlus": "Advanced API integrations"
+        },
+        "customerSupport": {
+          "freemium": "Community support",
+          "standard": "Local support",
+          "pro": "Priority onboarding",
+          "proPlus": "Dedicated account manager"
+        },
+        "training": {
+          "pro": "Staff training portal",
+          "proPlus": "Custom workshops and enterprise onboarding"
+        },
+        "dataMigration": {
+          "standard": "Basic import tools",
+          "pro": "Assisted migration",
+          "proPlus": "Enterprise data migration"
+        }
+      }
+    },
+    "faq": {
+      "sectionTitle": "FAQs",
+      "sectionIntro": "Find out about SAM and billing. For enterprise licensing or procurement, contact us.",
+      "contactUs": "contact us",
+      "readRefundPolicy": "Refund Policy",
+      "items": {
+        "whatIsPro": {
+          "title": "What is SAM?",
+          "body": "SAM (School Administration Manager) is an all-in-one school management platform for admissions, attendance, exams, finance, communication, and analytics."
+        },
+        "freeUpdates": {
+          "title": "What does “free updates” mean?",
+          "body": "All plans receive ongoing product improvements and security patches at no extra cost during your active plan period."
+        },
+        "requiredVersion": {
+          "title": "What do I need to run SAM?",
+          "body": "SAM is a cloud-hosted service. You only need a modern browser and internet access. Our mobile apps are optional."
+        },
+        "teamOrgPlans": {
+          "title": "How do user limits work?",
+          "body": "The Pro plan includes up to 5 staff users. The Organization plan includes up to 25 staff users. Students and guardians access is included as per plan features."
+        },
+        "orgMoreLicenses": {
+          "title": "Need more than 25 staff users?",
+          "body": "We can customize user limits and pricing for larger institutions."
+        },
+        "commercialUse": {
+          "title": "Can SAM be used by private schools?",
+          "body": "Yes. SAM supports public, private, and international schools with localized features and payments."
+        },
+        "perProjectLicense": {
+          "title": "Do I need a separate plan for each school?",
+          "body": "Each school requires its own subscription. Multi-school groups can consolidate billing on the Organization plan."
+        },
+        "upgradeLater": {
+          "title": "Can I upgrade to a team or organization plan later?",
+          "body": "Yes, you can upgrade or downgrade at any time; changes prorate on the next billing cycle."
+        },
+        "foundIssue": {
+          "title": "Found an issue?",
+          "body": "Please report any issues from the help menu or via our contact page."
+        },
+        "refundPolicy": {
+          "title": "What is your refund policy?",
+          "body": "If you're not satisfied with SAM, contact us within 7 days of purchase for a full refund."
+        },
+        "stillHaveQuestions": {
+          "title": "Still have questions?",
+          "body": "We’re happy to help."
+        }
+      }
+    },
+    "success": {
+      "title": "Subscription setup complete",
+      "body": "Thanks! Your subscription was created. You’ll get an email receipt from our provider.",
+      "goDashboard": "Go to dashboard",
+      "goHome": "Return home"
+    },
+    "canceled": {
+      "title": "Subscription not completed",
+      "body": "Your checkout was canceled. You can try again anytime.",
+      "goCheckout": "Return to checkout",
+      "goHome": "Return home"
+    }
+  }
+}
