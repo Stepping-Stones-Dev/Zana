@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default: deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Public marketing content can be whitelisted here if added later
+
+    // Authenticated users can read their own subscription metadata by email
+    match /subscriptions/{id} {
+      allow read: if request.auth != null && resource.data.email == request.auth.token.email;
+      allow write: if false; // writes through server-side only
+    }
+
+    match /directDebitMandates/{id} {
+      allow read: if request.auth != null && resource.data.email == request.auth.token.email;
+      allow write: if false;
+    }
+
+    match /subscriptionCharges/{id} {
+      allow read: if request.auth != null && resource.data.subscriptionEmail == request.auth.token.email;
+      allow write: if false;
+    }
+
+    // For server-side service account: use Admin SDK (bypasses rules)
+  }
+}

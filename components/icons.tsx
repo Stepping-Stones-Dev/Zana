@@ -184,3 +184,20 @@ export const SearchIcon = (props: IconSvgProps) => (
     />
   </svg>
 );
+
+export const ArrowRightIcon: React.FC<IconSvgProps> = ({ size = 20, width, height, ...props }) => (
+  <svg
+    width={size || width}
+    height={size || height}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+);

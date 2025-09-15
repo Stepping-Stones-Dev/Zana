@@ -1,6 +1,11 @@
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
 module.exports = {
+  i18n: {
+    locales: ["en", "sw"],
+    defaultLocale: "en",
+    localeDetection: true,
+  },
   webpack(config, options) {
     if (!options.isServer) {
       config.plugins.push(

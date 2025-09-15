@@ -1,0 +1,400 @@
+{
+  "pricing": {
+    "title": "Bei",
+    "choosePlan": "Chagua mpango wako.",
+    "startTrial": "Anza na jaribio la bure kwa mpango wowote. Boresha wakati wowote.",
+    "monthly": "Kila mwezi",
+    "yearly": "Kila mwaka",
+    "mostPopular": "Maarufu Zaidi",
+    "buy": "Nunua {{plan}}",
+    "ariaBilling": "Kipindi cha malipo",
+    "billed": "malipo {{period}}",
+    "perMonth": "/mwezi",
+    "perYear": "/mwaka",
+    "save": "Hifadhi {{amount}}",
+    "planSuffix": "Mpango",
+    "processing": "Inachakata…",
+    "payment": {
+      "requestSent": "Ombi limetumwa. Angalia simu yako ili kuidhinisha malipo.",
+      "failed": "Malipo yameshindwa"
+    },
+    "currency": "KES",
+    "plans": {
+      "standard": {
+        "name": "Kawaida",
+        "blurb": "Kwa watu binafsi na shule ndogo zinazanza.",
+        "users": "Mtumiaji 1"
+      },
+      "pro": {
+        "name": "Pro",
+        "blurb": "Kwa timu zinazokua zinazohitaji uotomatiki.",
+        "users": "Hadi watumiaji 5"
+      },
+      "org": {
+        "name": "Shirika",
+        "blurb": "Kwa shule na mashirika makubwa.",
+        "users": "Hadi watumiaji 25"
+      }
+    },
+    "success": {
+        "title": "Usajili umekamilika",
+        "body": "Asante! Usajili wako umeundwa. Utapokea risiti ya barua pepe kutoka kwa mtoa huduma.",
+        "goDashboard": "Nenda kwenye dashibodi",
+        "goHome": "Rudi nyumbani"
+    },
+    "canceled": {
+        "title": "Usajili haujakamilika",
+        "body": "Malipo ya mtandaoni yamekatizwa. Unaweza kujaribu tena wakati wowote.",
+        "goCheckout": "Rudi kwenye malipo",
+        "goHome": "Rudi nyumbani"
+    },
+    "checkout": {
+  "back": "Rudi",
+      "email": "Barua pepe",
+      "paypalEmail": "Barua pepe ya PayPal",
+      "emailPlaceholder": "wewe@mfano.com",
+      "paypalPlaceholder": "wewe@paypal.com",
+      "phoneLabel": "Simu (Fedha za Simu)",
+      "phonePlaceholder": "07XXXXXXXX au +2547XXXXXXX",
+      "cardName": "Jina la mwenye kadi",
+      "cardNamePlaceholder": "Jina kwenye kadi",
+      "cardNumber": "Nambari ya kadi",
+      "cardNumberPlaceholder": "1234 5678 9012 3456",
+      "cardExpiry": "Muda wa mwisho",
+      "cardExpiryPlaceholder": "MM/YY",
+      "cardCvc": "CVC",
+      "cardCvcPlaceholder": "CVC",
+      "cardPreviewNote": "Malipo kwa kadi bado hayajawezeshwa; sehemu hizi ni za maonyesho.",
+      "billingDirectDebit": "Malipo kupitia Debit ya Moja kwa Moja",
+      "provider": {
+        "mobileMoney": "Fedha za Simu",
+        "card": "Kadi",
+        "paypal": "PayPal"
+      },
+  "pesapalButton": "Lipa kwa Pesapal",
+  "autoChargeNote": "Tutatoza mtoa huduma huyu kiotomatiki kila upyaishaji.",
+  "payNow": "Lipa sasa",
+  "otherInformation": "Taarifa nyingine",
+  "businessPurchase": "Ninununua kama biashara",
+  "orderSummary": "Muhtasari wa agizo",
+  "orderSummaryAria": "Muhtasari wa agizo",
+  "subtotal": "Jumla ndogo",
+  "taxes": "Kodi",
+  "taxesTbd": "Itahesabiwa wakati wa malipo",
+  "totalDue": "Jumla inayodaiwa",
+  "vatPercent": "VAT ({{percent}}%)",
+  "legal": "Kwa kubofya Lipa sasa, unakubali Sheria za Huduma na Sera ya Faragha.",
+  "payFormAria": "Fomu ya malipo",
+      "legalTrial": "Jaribio la bure la siku 30: Usajili wako utaanza mara moja na utasasishwa kiotomatiki mwishoni mwa kipindi cha jaribio cha siku 30 isipokuwa ukighairi. Ukiendelea, unaturuhusu kuhifadhi maelezo yako ya malipo na kutoza kiotomatiki kiasi kinachohusika cha usajili (ikiwemo ushuru) kwa misingi ya kurudia hadi utakapo ghairi. Unaweza kughairi wakati wowote kupitia mipangilio ya akaunti yako.",
+      "paypalDisabled": "Lipa kwa PayPal (huhitaji idhini)",
+      "consent": {
+        "accountEmails": "Nakubali kupokea barua pepe muhimu za akaunti na miamala (mfano, risiti, taarifa za huduma).",
+        "marketingEmails": "Ningependa kupokea masasisho ya bidhaa na barua pepe za uuzaji (hiari).",
+        "termsPrefix": "Nimesoma na kukubali",
+        "termsLink": "Sheria za Huduma",
+        "and": "na",
+        "privacyLink": "Sera ya Faragha",
+        "requiredNote": "Tafadhali kubali ridhaa zinazohitajika ili kuendelea."
+      }
+    },
+    "matrix": {
+      "labels": {
+        "cost": "Gharama",
+        "targetAudience": "Walengwa",
+        "studentRegistration": "Usajili wa wanafunzi",
+        "discipline": "Ufuatiliaji wa nidhamu na tabia",
+        "promotionWorkflows": "Utaratibu wa kupandisha wanafunzi",
+        "studentAttendance": "Mahudhurio ya wanafunzi kila siku",
+        "staffAttendance": "Mahudhurio ya wafanyakazi",
+        "timetableBuilder": "Utengenezaji wa ratiba",
+        "examResults": "Matokeo ya mitihani",
+        "gradingScales": "Viwango maalum vya upangaji alama",
+        "performanceDashboards": "Dashibodi za utendaji",
+        "predictiveAlerts": "Arifa za utabiri kwa wanafunzi walio hatarini",
+        "mobileAccess": "Ufikiaji kupitia programu ya simu",
+        "pushNotifications": "Arifa za msukumo",
+        "parentTeacherCommunication": "Mawasiliano ya mzazi na mwalimu",
+        "feeStructures": "Miundo ya ada na bili",
+        "mpesa": "M-Pesa na fedha za simu",
+        "payroll": "Mishahara ya wafanyakazi",
+        "hostelTransport": "Ujumuishaji wa ada za bweni na usafiri",
+        "financeForecasting": "Utabiri wa fedha",
+        "bulkSms": "SMS za jumla",
+        "emailIntegration": "Ujumuishaji wa barua pepe",
+        "inAppChat": "Gumzo ndani ya programu",
+        "automatedReminders": "Vikumbusho otomatiki kwa ada na mitihani",
+        "attendanceAnalytics": "Uchanganuzi wa mahudhurio",
+        "examAnalytics": "Uchanganuzi wa mitihani",
+        "financeDashboards": "Dashibodi za fedha",
+        "customReportBuilder": "Kijenzi cha ripoti maalum",
+        "staffRecords": "Rekodi za wafanyakazi",
+        "staffPortal": "Portal ya mafunzo ya wafanyakazi",
+        "staffAppraisals": "Tathmini za wafanyakazi na KPIs",
+        "leaveManagement": "Usimamizi wa likizo",
+        "library": "Usimamizi wa maktaba",
+        "hostel": "Usimamizi wa bweni",
+        "inventory": "Usimamizi wa hesabu na mali",
+        "transport": "Usimamizi wa usafiri",
+        "cafeteria": "Bili ya kantini",
+        "clubs": "Usimamizi wa vilabu na ziada",
+        "cloudDeployment": "Uwekaji wa wingu",
+        "offlineAccess": "Ufikiaji bila mtandao",
+        "curriculumLocalization": "Uboreshaji wa mitaala",
+        "multiSchoolDashboards": "Dashibodi za shule nyingi",
+        "apiIntegrations": "Miunganiko ya API",
+        "customerSupport": "Msaada kwa wateja",
+        "training": "Mafunzo",
+        "dataMigration": "Uhamisho wa data"
+      },
+      "values": {
+        "targetAudience": {
+          "standard": "Shule za kati zenye wanafunzi 200 hadi 1,000",
+          "pro": "Shule kubwa za binafsi na za kimataifa",
+          "proPlus": "Vikundi vya shule, NGOs na wizara"
+        },
+        "studentRegistration": {
+          "standard": "Wasifu kamili ukiwemo afya, walezi na nidhamu",
+          "pro": "Inajumuisha uhamisho, upandishaji na kuhitimu",
+          "proPlus": "Ulandanishi wa wanafunzi kati ya kampasi nyingi"
+        },
+        "discipline": {
+          "standard": "Ufuatiliaji wa nidhamu",
+          "pro": "Marekodi yaliyoimarishwa",
+          "proPlus": "Katikati ya kampasi nyingi"
+        },
+        "studentAttendance": {
+          "standard": "Mahudhurio kupitia simu",
+          "pro": "Ratiba mahiri na kugundua migongano",
+          "proPlus": "Ratiba ya biashara katika kampasi nyingi"
+        },
+        "staffAttendance": {
+          "standard": "Mahudhurio ya wafanyakazi",
+          "pro": "Mahudhurio ya wafanyakazi yaliyoimarishwa",
+          "proPlus": "Mahudhurio ya wafanyakazi ya biashara"
+        },
+        "timetableBuilder": {
+          "standard": "Buruta na dondosha",
+          "pro": "Ugawaji wa walimu kiotomatiki",
+          "proPlus": "Upangaji wa shule nyingi"
+        },
+        "examResults": {
+          "standard": "Kadi za matokeo kiotomatiki",
+          "pro": "Dashibodi za mitiririko",
+          "proPlus": "Uchanganuzi wa utendaji wa utabiri"
+        },
+        "performanceDashboards": {
+          "pro": "Dashibodi za utendaji",
+          "proPlus": "Dashibodi za utendaji za juu"
+        },
+        "predictiveAlerts": {
+          "pro": "Arifa za utabiri kwa wanafunzi walio hatarini",
+          "proPlus": "Arifa za utabiri zinazoendeshwa na AI"
+        },
+        "mobileAccess": {
+          "standard": "Dashibodi",
+          "pro": "Mwonekano wa ada na utendaji",
+          "proPlus": "Takwimu na usaidizi wa lugha nyingi"
+        },
+        "pushNotifications": {
+          "standard": "Arifa za msukumo",
+          "pro": "Arifa za msukumo",
+          "proPlus": "Utiririshaji wa kazi otomatiki"
+        },
+        "parentTeacherCommunication": {
+          "pro": "Gumzo ndani ya programu",
+          "proPlus": "Njia za kipaumbele na muunganiko wa video"
+        },
+        "feeStructures": {
+          "standard": "Ankara na madeni",
+          "pro": "Ufadhili na punguzo",
+          "proPlus": "Dashibodi ya fedha ya shule nyingi"
+        },
+        "mpesa": {
+          "standard": "M-Pesa na fedha za simu",
+          "pro": "Upatanisho ulioboreshwa",
+          "proPlus": "Muunganiko na ERP na mishahara"
+        },
+        "payroll": {
+          "pro": "Usimamizi wa mishahara",
+          "proPlus": "Mishahara ya biashara"
+        },
+        "hostelTransport": {
+          "pro": "Ada za bweni na usafiri",
+          "proPlus": "Bweni na usafiri wa hali ya juu"
+        },
+        "financeForecasting": {
+          "proPlus": "Utabiri wa fedha"
+        },
+        "bulkSms": {
+          "standard": "SMS za jumla",
+          "pro": "SMS za jumla",
+          "proPlus": "SMS za jumla"
+        },
+        "emailIntegration": {
+          "standard": "Ujumuishaji wa barua pepe",
+          "pro": "Ujumuishaji wa barua pepe",
+          "proPlus": "Ujumuishaji wa barua pepe"
+        },
+        "inAppChat": {
+          "pro": "Gumzo ndani ya programu",
+          "proPlus": "Gumzo lililoimarishwa ndani ya programu"
+        },
+        "automatedReminders": {
+          "standard": "Vikumbusho otomatiki",
+          "pro": "Vikumbusho otomatiki",
+          "proPlus": "Vikumbusho otomatiki"
+        },
+        "attendanceAnalytics": {
+          "standard": "Uchanganuzi wa mahudhurio",
+          "pro": "Dashibodi zilizoimarishwa",
+          "proPlus": "Uchanganuzi wa utabiri na ulinganisho"
+        },
+        "examAnalytics": {
+          "standard": "Uchanganuzi wa mitihani",
+          "pro": "Uchanganuzi wa mitihani",
+          "proPlus": "Uchanganuzi wa mitihani wa juu"
+        },
+        "financeDashboards": {
+          "standard": "Dashibodi za msingi za fedha",
+          "pro": "Dashibodi za juu za fedha",
+          "proPlus": "Dashibodi za utabiri na utabiri wa fedha"
+        },
+        "customReportBuilder": {
+          "pro": "Kijenzi cha ripoti maalum",
+          "proPlus": "Ufikiaji kamili wa ripoti maalum"
+        },
+        "staffRecords": {
+          "standard": "Taarifa za msingi za HR",
+          "pro": "HR kamili na mishahara",
+          "proPlus": "HR ya biashara yenye tathmini"
+        },
+        "staffPortal": {
+          "pro": "Ufikiaji wa mafunzo na rasilimali",
+          "proPlus": "Njia za kujifunza na vyeti"
+        },
+        "staffAppraisals": {
+          "pro": "Tathmini za wafanyakazi na KPIs",
+          "proPlus": "Mapitio ya utendaji ya juu"
+        },
+        "leaveManagement": {
+          "pro": "Usimamizi wa likizo",
+          "proPlus": "Usimamizi wa likizo"
+        },
+        "library": {
+          "pro": "Usimamizi wa maktaba",
+          "proPlus": "Usimamizi wa maktaba"
+        },
+        "hostel": {
+          "pro": "Usimamizi wa bweni",
+          "proPlus": "Usimamizi wa bweni"
+        },
+        "inventory": {
+          "pro": "Usimamizi wa hesabu na mali",
+          "proPlus": "Usimamizi wa juu wa hesabu na mali"
+        },
+        "transport": {
+          "pro": "Njia na ada",
+          "proPlus": "Ufuatiliaji wa GPS na arifa za wazazi"
+        },
+        "cafeteria": {
+          "pro": "Bili ya kantini",
+          "proPlus": "Bili ya kantini ya juu"
+        },
+        "clubs": {
+          "pro": "Usimamizi wa vilabu na ziada",
+          "proPlus": "Usimamizi wa vilabu na ziada"
+        },
+        "cloudDeployment": {
+          "freemium": "Uwekaji wa wingu",
+          "standard": "Uwekaji wa wingu",
+          "pro": "Uwekaji wa wingu",
+          "proPlus": "Uwekaji wa wingu wa kiwango cha biashara"
+        },
+        "offlineAccess": {
+          "standard": "Mahudhurio na mitihani bila mtandao",
+          "pro": "Uwezo kamili bila mtandao",
+          "proPlus": "Ulandanishi bila mtandao wa shule nyingi"
+        },
+        "curriculumLocalization": {
+          "standard": "Uboreshaji wa mitaala",
+          "pro": "Uboreshaji wa mitaala",
+          "proPlus": "Msaada wa mitaala mingi"
+        },
+        "multiSchoolDashboards": {
+          "proPlus": "Dashibodi za shule nyingi"
+        },
+        "apiIntegrations": {
+          "pro": "Miunganiko ya API",
+          "proPlus": "Miunganiko ya API ya juu"
+        },
+        "customerSupport": {
+          "freemium": "Msaada wa jamii",
+          "standard": "Msaada wa eneo",
+          "pro": "Uandikishaji wa kipaumbele",
+          "proPlus": "Meneja wa akaunti maalum"
+        },
+        "training": {
+          "pro": "Portal ya mafunzo ya wafanyakazi",
+          "proPlus": "Warsha maalum na uandikishaji wa biashara"
+        },
+        "dataMigration": {
+          "standard": "Zana za kuingiza za msingi",
+          "pro": "Uhamisho unaosaidiwa",
+          "proPlus": "Uhamisho wa data wa biashara"
+        }
+      }
+    },
+    "faq": {
+      "sectionTitle": "Maswali Yanayoulizwa Mara kwa Mara",
+      "sectionIntro": "Jifunze kuhusu SAM na bili. Kwa leseni ya taasisi au ununuzi, wasiliana nasi.",
+      "contactUs": "wasiliana nasi",
+      "readRefundPolicy": "Sera ya Marejesho",
+      "items": {
+        "whatIsPro": {
+          "title": "SAM ni nini?",
+          "body": "SAM (School Administration Manager) ni jukwaa la usimamizi wa shule linalojumuisha usajili, mahudhurio, mitihani, fedha, mawasiliano na uchanganuzi."
+        },
+        "freeUpdates": {
+          "title": "“Sasisho za bure” zinamaanisha nini?",
+          "body": "Mipango yote hupokea maboresho ya bidhaa na viraka vya usalama bila gharama ya ziada wakati wa kipindi chako cha mpango."
+        },
+        "requiredVersion": {
+          "title": "Ninahitaji nini kuendesha SAM?",
+          "body": "SAM ni huduma inayowekewa wingu. Unahitaji tu kivinjari cha kisasa na intaneti. Programu zetu za simu ni za hiari."
+        },
+        "teamOrgPlans": {
+          "title": "Vikomo vya watumiaji hufanyaje kazi?",
+          "body": "Mpango wa Pro unajumuisha hadi watumiaji 5 wa wafanyakazi. Mpango wa Shirika unajumuisha hadi watumiaji 25 wa wafanyakazi. Ufikiaji wa wanafunzi na walezi unajumuishwa kulingana na vipengele vya mpango."
+        },
+        "orgMoreLicenses": {
+          "title": "Unahitaji zaidi ya watumiaji 25 wa wafanyakazi?",
+          "body": "Tunaweza kubinafsisha vikomo vya watumiaji na bei kwa taasisi kubwa."
+        },
+        "commercialUse": {
+          "title": "Je, SAM inaweza kutumiwa na shule binafsi?",
+          "body": "Ndiyo. SAM inaunga mkono shule za umma, binafsi na za kimataifa kwa vipengele vilivyosawazishwa na malipo."
+        },
+        "perProjectLicense": {
+          "title": "Je, nahitaji mpango tofauti kwa kila shule?",
+          "body": "Kila shule inahitaji usajili wake. Vikundi vya shule vinaweza kuunganisha bili kwenye mpango wa Shirika."
+        },
+        "upgradeLater": {
+          "title": "Je, naweza kuboresha hadi mpango wa timu au shirika baadaye?",
+          "body": "Ndiyo, unaweza kuboresha au kushusha wakati wowote; mabadiliko yatatumiwa kwenye bili inayofuata."
+        },
+        "foundIssue": {
+          "title": "Umegundua tatizo?",
+          "body": "Tafadhali ripoti matatizo kupitia menyu ya usaidizi au kupitia ukurasa wetu wa mawasiliano."
+        },
+        "refundPolicy": {
+          "title": "Sera yenu ya marejesho ni ipi?",
+          "body": "Ikiwa huridhiki na SAM, wasiliana nasi ndani ya siku 7 baada ya kununua ili urejeshewe pesa zote."
+        },
+        "stillHaveQuestions": {
+          "title": "Bado una maswali?",
+          "body": "Tuko tayari kusaidia."
+        }
+      }
+    }
+  }
+}

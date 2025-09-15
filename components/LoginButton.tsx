@@ -1,12 +1,14 @@
 import { auth } from "@/lib/firebase";
 import { Button } from "@heroui/button";
 import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import { useTranslation } from "@/providers/I18nProvider";
 import { useEffect, useState } from "react";
 
 // Define allowed domains for tenancy
 const ALLOWED_DOMAINS = ["company.com", "anothercompany.com"];
 
 export function LoginButton({ onLoginResult }: { onLoginResult?: (result: { success: boolean; user?: any; error?: string }) => void }) {
+  const { t } = useTranslation();
   const [tenant, setTenant] = useState<any>(null);
   const [showToast, setShowToast] = useState(false);
   const [toastUser, setToastUser] = useState<string | null>(null);
@@ -42,9 +44,9 @@ export function LoginButton({ onLoginResult }: { onLoginResult?: (result: { succ
             setTimeout(() => setShowToast(false), 3000);
           }
         } else {
-          alert("Access denied: your workspace is not allowed.");
+          alert(t("auth.accessDenied"));
           auth.signOut();
-          if (onLoginResult) onLoginResult({ success: false, error: "Access denied: your workspace is not allowed." });
+          if (onLoginResult) onLoginResult({ success: false, error: t("auth.accessDenied") });
         }
       }
     });
@@ -60,7 +62,7 @@ export function LoginButton({ onLoginResult }: { onLoginResult?: (result: { succ
         className="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition"
         variant="light"
       >
-        Login with Google Workspace
+        {t("auth.loginWithGoogle")}
       </Button>
       {showToast && (
         <div
@@ -73,7 +75,7 @@ export function LoginButton({ onLoginResult }: { onLoginResult?: (result: { succ
           }}
         >
           <div className="bg-green-500 text-white px-6 py-3 rounded shadow-lg">
-            Welcome, {toastUser}!
+            {t("auth.welcome", { user: toastUser || "" })}
           </div>
         </div>
       )}

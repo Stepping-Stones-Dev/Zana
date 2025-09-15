@@ -1,0 +1,57 @@
+{
+  "brand": "ACME",
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "loginSuccess": "Login successful!",
+  "loggedIn": "You're logged in!",
+  "accessDenied": "Access denied: your workspace is not allowed.",
+  "loginWithGoogle": "Login with Google Workspace",
+  "welcome": "Welcome, {{user}}!"
+  },
+  "contact": {
+    "heading": "Get in touch",
+    "lead": "Have questions? Reach out and we'll help you get set up."
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "sw": "Swahili"
+  },
+  "home": {
+    "hero": {
+      "smart": "Smart",
+      "empower": "Empower",
+      "line1Rest": "Workflows to",
+      "line2Rest": "Educators."
+    },
+    "subheading": "Beautiful, fast, and accessible. School operations paired with automation to onboard, manage roles, and keep records tidy.",
+    "cta": {
+      "freeTrial": "Free Trial",
+      "github": "GitHub"
+    },
+    "search": {
+      "example": "Primary Science vol. 4"
+    },
+    "tabs": {
+      "inventory": "Inventory",
+      "transport": "Transport",
+      "timetables": "Timetables",
+      "reports": "Reports"
+    },
+    "profile": {
+      "follow": "Follow",
+      "following": "Following",
+      "followers": "Followers"
+    },
+    "floating": {
+      "manageInventory": "Manage your inventory",
+      "onboardStudents": "Onboard students",
+      "trackProgress": "Track progress"
+    }
+  }
+}

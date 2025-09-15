@@ -3,4 +3,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ...existing code or additional global styles... */
+/* Custom enhancements */
+.hero-pattern {
+	background: radial-gradient(circle at 25% 25%, rgba(56,189,248,0.12), transparent 60%),
+							radial-gradient(circle at 75% 75%, rgba(29,78,216,0.10), transparent 70%);
+	position: relative;
+}
+
+.text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-sky-500 to-blue-700; }
+
+.shimmer { background-size: 200% auto; animation: shimmer 4s linear infinite; }
+@keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+.glass-card { @apply backdrop-blur-md bg-white/60 dark:bg-slate-900/50 shadow-md border border-white/30 dark:border-white/10 rounded-2xl; }
+.glass-light { @apply backdrop-blur bg-white/40 dark:bg-slate-800/40 border border-white/20 dark:border-white/10 rounded-xl; }
+
+.blob { position: absolute; border-radius: 9999px; filter: blur(60px); animation: floatPulse 10s ease-in-out infinite; pointer-events: none; }
+@keyframes floatPulse { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-25px) scale(1.08); } }
+
+.progress-track { @apply h-3 rounded-full bg-slate-200/70 dark:bg-slate-700/70 overflow-hidden; }
+.progress-bar { @apply h-full bg-gradient-to-r from-blue-500 to-sky-500 rounded-full transition-all duration-500; }
+
+.radio-tile-group { @apply flex flex-col gap-3; }
+.radio-tile { @apply relative w-full flex items-start gap-3 p-3 rounded-lg border border-white/20 dark:border-white/10 bg-white/30 dark:bg-slate-800/40 hover:bg-white/50 dark:hover:bg-slate-800/60 transition cursor-pointer backdrop-blur; }
+.radio-tile[data-selected="true"] { @apply border-sky-500 bg-sky-50/70 dark:bg-sky-900/30 shadow-sm; }
+.radio-circle { @apply w-5 h-5 rounded-full border border-slate-400 flex items-center justify-center shrink-0 transition; }
+.radio-tile[data-selected="true"] .radio-circle { @apply border-sky-600 bg-sky-500; }
+.radio-title { @apply font-medium text-sm; }
+.radio-desc { @apply text-[11px] text-slate-500 dark:text-slate-400 leading-snug; }
+
+/* Glass form input improvements */
+.input-glass { @apply w-full text-sm px-3 py-2 rounded-md border transition-colors backdrop-blur;
+	background: linear-gradient(rgba(255,255,255,0.88),rgba(255,255,255,0.82));
+	color: theme('colors.slate.800');
+	border-color: theme('colors.slate.300');
+}
+.dark .input-glass { 
+	background: linear-gradient(rgba(15,23,42,0.78),rgba(15,23,42,0.74));
+	color: theme('colors.slate.100');
+	border-color: theme('colors.slate.600');
+}
+.input-glass::placeholder { @apply text-slate-400; }
+.dark .input-glass::placeholder { @apply text-slate-500; }
+.input-glass:focus { @apply outline-none ring-2 ring-sky-500/60 border-sky-500; }
+.dark .input-glass:focus { @apply ring-sky-400/60 border-sky-400; }
+
+/* High-contrast select styling (inherits .input-glass if also applied) */
+select.input-glass { @apply pr-8 appearance-none bg-no-repeat bg-right; }
+
+/* Utility for subtle text shadow on glass for readability */
+.text-glass-contrast { text-shadow: 0 1px 1px rgba(255,255,255,0.35); }
+.dark .text-glass-contrast { text-shadow: 0 1px 1px rgba(0,0,0,0.6); }
+
+/* Emulated hero helpers */
+@layer utilities {
+	.bg-hero-loops {
+		background-image:
+			radial-gradient(1200px 600px at -10% 10%, rgba(59,130,246,0.08), transparent 60%),
+			radial-gradient(1000px 500px at 110% 40%, rgba(147,51,234,0.07), transparent 60%);
+		background-repeat: no-repeat;
+		background-position: left top, right center;
+	}
+
+	.animate-levitate { animation: levitate 12s ease-in-out infinite; }
+	.animate-levitate-fast { animation: levitate 10s ease-in-out infinite 1s; }
+	.animate-levitate-slower { animation: levitate 16s ease-in-out infinite 0.5s; }
+
+	.animate-spinner-ease-spin { animation: spinEase 1.2s ease-in-out infinite; }
+	.animate-spinner-linear-spin { animation: spinLinear 1.2s linear infinite; }
+}
+
+@keyframes levitate { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+@keyframes spinEase { 0% { transform: rotate(0deg) } 50% { transform: rotate(180deg) } 100% { transform: rotate(360deg) } }
+@keyframes spinLinear { 0% { transform: rotate(0deg) } 100% { transform: rotate(360deg) } }

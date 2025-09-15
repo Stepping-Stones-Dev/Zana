@@ -90,6 +90,49 @@ If you have a reserved domain on ngrok, use your reserved domain in the ACS URL.
 
 ```
 https://myapp.ngrok.app/api/auth/saml/callback
+
+## Onboarding Flow (SAM Early Access)
+
+Landing page drives a single primary CTA (Try It for Free) to `/onboarding`.
+
+1. User enters work email (no account needed yet).
+2. Backend (`POST /api/auth/initiate`) checks for existing workspace by domain.
+   - If exists: show Sign in with Google button (SAML / Google SSO placeholder).
+   - If not: suggest workspace name and allow quick create (`POST /api/tenants`).
+3. After creation or detection user proceeds with Google sign-in (`/api/auth/saml/login`).
+4. First creator will later be routed to setup dashboard (future enhancement).
+
+Current implementation uses an in-memory store (dev only) until Prisma models are wired.
+
+Planned enhancements (not yet implemented):
+
+- SSO full enablement & metadata exchange UI.
+- Directory sync (Google Admin, future MS Graph).
+- Role editor & overrides.
+- SCIM provisioning token.
+- Assessment wizard growth loop.
+
+## M-Pesa Integration (Scaffolding)
+
+Set the following env variables for real STK push (otherwise simulation auto-activates trial):
+
+```
+MPESA_CONSUMER_KEY=your_key
+MPESA_CONSUMER_SECRET=your_secret
+MPESA_PASSKEY=your_lipa_na_mpesa_online_passkey
+MPESA_SHORT_CODE=174379
+MPESA_CALLBACK_URL=https://your-domain.example/api/payments/mpesa/callback
+MPESA_ENV=sandbox  # or production
+```
+
+Endpoints:
+- `POST /api/payments/mpesa/initiate` { email, phone, amount } → starts STK push (or simulates)
+- `POST /api/payments/mpesa/callback` ← Safaricom callback (updates profile status)
+- `GET /api/onboarding/status?email=...` → profile & trial status
+
+Utility: `lib/mpesa.ts` handles token + STK request & phone normalization.
+
+
 ```
 
 ## License

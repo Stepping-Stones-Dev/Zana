@@ -51,3 +51,53 @@ export const subtitle = tv({
     fullWidth: true,
   },
 });
+
+// Floating animation + delay helpers
+export const floating = tv({
+  base: "will-change-transform",
+  variants: {
+    speed: {
+      normal: "animate-levitate",
+      fast: "animate-levitate-fast",
+      slower: "animate-levitate-slower",
+    },
+    delay: {
+      d120: "[animation-delay:120ms]",
+      d300: "[animation-delay:300ms]",
+      d420: "[animation-delay:420ms]",
+      d650: "[animation-delay:650ms]",
+      d900: "[animation-delay:900ms]",
+      d1100: "[animation-delay:1100ms]",
+      d1300: "[animation-delay:1300ms]",
+      d1400: "[animation-delay:1400ms]",
+      d1700: "[animation-delay:1700ms]",
+    },
+  },
+});
+
+// Floating tag (pill) with color variants
+export const floatingTag = tv({
+  base: "px-3 py-1.5 inline-flex items-center justify-center rounded-medium shadow-small text-sm",
+  variants: {
+    color: {
+      secondary: "bg-secondary text-secondary-foreground",
+      success: "bg-success text-success-foreground",
+      warning: "bg-warning text-warning-foreground",
+      primary: "bg-primary text-primary-foreground",
+      default: "bg-default text-foreground",
+    },
+  },
+  defaultVariants: {
+    color: "secondary",
+  },
+});
+
+// Floating card base skin
+export const floatingCard = tv({
+  base: "overflow-hidden text-foreground bg-content1 shadow-large rounded-large transition border-none",
+});
+
+// Simple pill container (e.g., tabs)
+export const pillContainer = tv({
+  base: "flex p-1 gap-2 items-center bg-default-100 rounded-full shadow-sm",
+});

@@ -1,0 +1,57 @@
+{
+  "brand": "ACME",
+  "nav": {
+    "features": "Vipengele",
+    "pricing": "Bei",
+    "contact": "Mawasiliano"
+  },
+  "auth": {
+    "signIn": "Ingia",
+    "loginSuccess": "Umeingia kwa mafanikio!",
+  "loggedIn": "Umeingia!",
+  "accessDenied": "Hupaswi kufikia: mazingira yako ya kazi hayaruhusiwi.",
+  "loginWithGoogle": "Ingia kwa Google Workspace",
+  "welcome": "Karibu, {{user}}!"
+  },
+  "contact": {
+    "heading": "Wasiliana Nasi",
+    "lead": "Una maswali? Wasiliana nasi na tutakusaidia kuanza."
+  },
+  "language": {
+    "label": "Lugha",
+    "en": "Kiingereza",
+    "sw": "Kiswahili"
+  },
+  "home": {
+    "hero": {
+  "smart": "Mikondo",
+  "empower": "Kuwawezesha",
+  "line1Rest": "ya Kazi Mahiri ya",
+  "line2Rest": "Walimu."
+    },
+    "subheading": "Nzuri, ya haraka, na rahisi kutumia. Uendeshaji wa shule ukiambatana na uotomatiki ili kuandikisha, kusimamia majukumu, na kuweka rekodi nadhifu.",
+    "cta": {
+      "freeTrial": "Jaribio la Bure",
+      "github": "GitHub"
+    },
+    "search": {
+      "example": "Sayansi ya Msingi jil. 4"
+    },
+    "tabs": {
+      "inventory": "Hesabu",
+      "transport": "Usafiri",
+      "timetables": "Ratiba",
+      "reports": "Ripoti"
+    },
+    "profile": {
+      "follow": "Fuata",
+      "following": "Wanao Fuatwa",
+      "followers": "Wafuasi"
+    },
+    "floating": {
+      "manageInventory": "Dhibiti hesabu yako",
+      "onboardStudents": "Andikisha wanafunzi",
+      "trackProgress": "Fuatilia maendeleo"
+    }
+  }
+}
