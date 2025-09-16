@@ -1,5 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../lib/firebase.js";
+// Lazy import firebase on client only to avoid SSR build-time credential validation
+let auth: any = undefined;
+if (typeof window !== "undefined") {
+  // dynamic require so bundlers don't hoist
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  auth = require("../lib/firebase.js").auth;
+}
 import { onAuthStateChanged, type User } from "firebase/auth";
 
 export type Role = "admin" | "manager" | "employee" | "guest";
@@ -19,13 +25,18 @@ const AuthContext = createContext<AuthContextProps>({
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  // During SSR just render children without auth wiring
+  if (typeof window === "undefined") {
+    return <>{children}</>;
+  }
   const [user, setUser] = useState<User | null>(null);
   const [role, setRole] = useState<Role>("guest");
   const [loading, setLoading] = useState(true);
   const [tenantDomain, setTenantDomain] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
+  if (!auth) return; // safety
+  const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
       setUser(firebaseUser);
       if (firebaseUser && firebaseUser.email) {
         const domain = firebaseUser.email.split("@")[1];
