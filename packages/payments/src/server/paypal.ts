@@ -19,7 +19,7 @@ export async function paypalCreateSubscription(params: { planId: string; email?:
       plan_id: planId,
       ...(email ? { subscriber: { email_address: email } } : {}),
       application_context: {
-        brand_name: process.env.PUBLIC_BRAND || "SAM",
+        brand_name: process.env.PUBLIC_BRAND || "Zana",
         user_action: "SUBSCRIBE_NOW",
         return_url: `${process.env.PUBLIC_BASE_URL || "http://localhost:3000"}/payments/success`,
         cancel_url: `${process.env.PUBLIC_BASE_URL || "http://localhost:3000"}/payments/canceled`,

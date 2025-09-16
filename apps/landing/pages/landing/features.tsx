@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import DefaultLayout from "@/layouts/default";
 // Removed Tabs; implementing scroll-based navigation instead
-import { useTranslation } from "@sam/i18n";
+import { useTranslation } from "@zana/i18n";
 
 type PlanKey = "standard" | "pro" | "proPlus";
 type Feature = { key: string; title: string; desc: string; plans: PlanKey[] };

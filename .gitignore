@@ -24,11 +24,17 @@ certs/*.pem
 # Vercel
 .vercel
 
-# Build Outputs
-.next/
-out/
 build
 dist
+
+build/
+
+# Centralized build outputs
+/dist/
+build/
+
+# Turbo logs
+/logs/
 
 
 # Debug

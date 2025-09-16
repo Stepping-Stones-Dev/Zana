@@ -1,14 +1,14 @@
 import Link from "next/link";
 import DefaultLayout from "@/layouts/default";
-import { title, subtitle, floating, floatingTag, floatingCard, pillContainer, SearchIcon } from "@sam/ui";
+import { title, subtitle, floating, floatingTag, floatingCard, pillContainer, SearchIcon } from "@zana/ui";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Snippet } from "@heroui/snippet";
 import { Switch } from "@heroui/switch";
 import { Card, CardBody } from "@heroui/react";
-// SearchIcon now imported directly from @sam/ui above
+// SearchIcon now imported directly from @zana/ui above
 import { Kbd } from "@heroui/kbd";
-import { useTranslation } from "@sam/i18n";
+import { useTranslation } from "@zana/i18n";
 
 interface Stat { label: string; value: string }
 
@@ -57,7 +57,7 @@ export default function IndexPage() {
             {/* Mobile badge */}
             <div className="flex justify-center w-full md:hidden">
               <Link href="/landing/features" className="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-2 h-7 text-small rounded-full text-primary-600 bg-default-200/50 border border-default-400/50">
-                <span className="px-2 font-semibold text-foreground text-xs">SAM v0.1&nbsp;🔥</span>
+                <span className="px-2 font-semibold text-foreground text-xs">Zana v0.1&nbsp;🔥</span>
               </Link>
             </div>
 
@@ -88,7 +88,7 @@ export default function IndexPage() {
               </Button>
 
               <Link
-                href="https://github.com/Stepping-Stones-Dev/sam"
+                href="https://github.com/Stepping-Stones-Dev/zana"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="md:hidden border-medium px-6 min-w-24 h-12 text-medium gap-3 rounded-full transition bg-transparent border-default text-foreground w-full inline-flex items-center justify-center"
@@ -137,7 +137,7 @@ export default function IndexPage() {
                   </div>
                   <Button size="sm" radius="full" className="bg-primary text-primary-foreground h-8">{t("home.profile.follow")}</Button>
                 </div>
-                <p className="text-sm text-default-400 mt-2">SAM has streamlined onboarding for our school, and improved our customer experience. #steppingstones #admins 🎉</p>
+                <p className="text-sm text-default-400 mt-2">Zana has streamlined onboarding for our school, and improved our customer experience. #steppingstones #admins 🎉</p>
                 <div className="flex gap-4 mt-3">
                   <div className="flex gap-1 text-default-400 text-sm"><span className="font-semibold">4</span> {t("home.profile.following")}</div>
                   <div className="flex gap-1 text-default-400 text-sm"><span className="font-semibold">97.1K</span> {t("home.profile.followers")}</div>

@@ -368,21 +368,21 @@
     },
     "faq": {
       "sectionTitle": "Maswali Yanayoulizwa Mara kwa Mara",
-      "sectionIntro": "Jifunze kuhusu SAM na bili. Kwa leseni ya taasisi au ununuzi, wasiliana nasi.",
+      "sectionIntro": "Jifunze kuhusu Zana na bili. Kwa leseni ya taasisi au ununuzi, wasiliana nasi.",
       "contactUs": "wasiliana nasi",
       "readRefundPolicy": "Sera ya Marejesho",
       "items": {
         "whatIsPro": {
-          "title": "SAM ni nini?",
-          "body": "SAM (School Administration Manager) ni jukwaa la usimamizi wa shule linalojumuisha usajili, mahudhurio, mitihani, fedha, mawasiliano na uchanganuzi."
+          "title": "Zana ni nini?",
+          "body": "Zana (School Administration Manager) ni jukwaa la usimamizi wa shule linalojumuisha usajili, mahudhurio, mitihani, fedha, mawasiliano na uchanganuzi."
         },
         "freeUpdates": {
           "title": "“Sasisho za bure” zinamaanisha nini?",
           "body": "Mipango yote hupokea maboresho ya bidhaa na viraka vya usalama bila gharama ya ziada wakati wa kipindi chako cha mpango."
         },
         "requiredVersion": {
-          "title": "Ninahitaji nini kuendesha SAM?",
-          "body": "SAM ni huduma inayowekewa wingu. Unahitaji tu kivinjari cha kisasa na intaneti. Programu zetu za simu ni za hiari."
+          "title": "Ninahitaji nini kuendesha Zana?",
+          "body": "Zana ni huduma inayowekewa wingu. Unahitaji tu kivinjari cha kisasa na intaneti. Programu zetu za simu ni za hiari."
         },
         "teamOrgPlans": {
           "title": "Vikomo vya watumiaji hufanyaje kazi?",
@@ -393,8 +393,8 @@
           "body": "Tunaweza kubinafsisha vikomo vya watumiaji na bei kwa taasisi kubwa."
         },
         "commercialUse": {
-          "title": "Je, SAM inaweza kutumiwa na shule binafsi?",
-          "body": "Ndiyo. SAM inaunga mkono shule za umma, binafsi na za kimataifa kwa vipengele vilivyosawazishwa na malipo."
+          "title": "Je, Zana inaweza kutumiwa na shule binafsi?",
+          "body": "Ndiyo. Zana inaunga mkono shule za umma, binafsi na za kimataifa kwa vipengele vilivyosawazishwa na malipo."
         },
         "perProjectLicense": {
           "title": "Je, nahitaji mpango tofauti kwa kila shule?",
@@ -410,7 +410,7 @@
         },
         "refundPolicy": {
           "title": "Sera yenu ya marejesho ni ipi?",
-          "body": "Ikiwa huridhiki na SAM, wasiliana nasi ndani ya siku 7 baada ya kununua ili urejeshewe pesa zote."
+          "body": "Ikiwa huridhiki na Zana, wasiliana nasi ndani ya siku 7 baada ya kununua ili urejeshewe pesa zote."
         },
         "stillHaveQuestions": {
           "title": "Bado una maswali?",

@@ -1,4 +1,4 @@
-# @sam/landing
+# @zana/landing
 
 Public marketing & acquisition Next.js app.
 
@@ -10,8 +10,8 @@ Public marketing & acquisition Next.js app.
 ## Tech
 - Next.js 15 (Pages router for now)
 - Tailwind (shared config pattern)
-- `@sam/i18n` for translations
-- `@sam/ui` shared design primitives
+- `@zana/i18n` for translations
+- `@zana/ui` shared design primitives
 
 ## Auth Stance
 No persistent auth context is mounted here to keep bundle lean. SAML button posts to `/api/auth/saml/login` (served by backend / dashboard environment). If you later add Firebase email onboarding, mount a lightweight provider only on those routes.
@@ -25,7 +25,7 @@ Avoid leaking private payment or SAML secrets.
 ## Development
 From repo root:
 ```
-pnpm --filter @sam/landing dev
+pnpm --filter @zana/landing dev
 ```
 
 ## Next Steps

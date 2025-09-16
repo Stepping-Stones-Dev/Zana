@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTranslation } from "@sam/i18n";
+import { useTranslation } from "@zana/i18n";
 
 type Props = {
   email: string;

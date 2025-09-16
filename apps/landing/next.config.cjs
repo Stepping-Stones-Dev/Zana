@@ -1,5 +1,5 @@
 module.exports = {
-  transpilePackages: ["@sam/payments", "@sam/auth", "@sam/i18n"],
+  transpilePackages: ["@zana/payments", "@zana/auth", "@zana/i18n"],
   experimental: { externalDir: true },
   i18n: {
     locales: ["en", "sw"],

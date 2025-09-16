@@ -1,5 +1,5 @@
 import DefaultLayout from "@/layouts/default";
-import { useTranslation } from "@sam/i18n";
+import { useTranslation } from "@zana/i18n";
 
 export default function ContactPage() {
   const { t } = useTranslation();

@@ -1,4 +1,4 @@
-import { firestore } from "@sam/auth/server";
+import { firestore } from "@zana/auth/server";
 import { createSubscription } from "./subscriptions.js";
 import { getProvider, makeAccountNumber, type ProviderName, type PlanId } from "../index.js";
 

@@ -71,7 +71,7 @@ export const PesapalProvider: PaymentProvider = {
 			id: `order_${Date.now()}`,
 			currency: "KES",
 			amount: amountKES || 100,
-			description: `SAM ${planId} ${billing}`,
+			description: `Zana ${planId} ${billing}`,
 			callback_url: callback,
 			notification_id: notificationId,
 			billing_address: {
@@ -139,7 +139,7 @@ export const PayPalProvider: PaymentProvider = {
 					application_context: {
 						return_url: `${process.env.PUBLIC_BASE_URL || "http://localhost:3000"}${locale && (locale === "en" || locale === "sw") ? `/${locale}` : ""}/payments/success`,
 						cancel_url: `${process.env.PUBLIC_BASE_URL || "http://localhost:3000"}${locale && (locale === "en" || locale === "sw") ? `/${locale}` : ""}/payments/canceled`,
-						brand_name: process.env.PUBLIC_BRAND || "SAM",
+						brand_name: process.env.PUBLIC_BRAND || "Zana",
 						locale: (locale || "en").toUpperCase(),
 						shipping_preference: "NO_SHIPPING",
 						user_action: "SUBSCRIBE_NOW",

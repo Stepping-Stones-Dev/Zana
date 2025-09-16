@@ -3,9 +3,9 @@ import { Button } from "@heroui/button";
 import { Card, CardBody, Tabs, Tab, Chip } from "@heroui/react";
 import { Input } from "@heroui/input";
 import Link from "next/link";
-import { useTranslation } from "@sam/i18n";
-import { computePlanAmounts, getPlanById, PlanId } from "@sam/payments";
-import { PayPalButton, PesapalButton } from "@sam/payments";
+import { useTranslation } from "@zana/i18n";
+import { computePlanAmounts, getPlanById, PlanId } from "@zana/payments";
+import { PayPalButton, PesapalButton } from "@zana/payments";
 
 export default function CheckoutPage() {
   const { t, locale } = useTranslation();
@@ -56,7 +56,7 @@ export default function CheckoutPage() {
   };
   const ppPlanId = ppPlanIdMap[planId];
 
-  const brand = process.env.NEXT_PUBLIC_BRAND || "SAM";
+  const brand = process.env.NEXT_PUBLIC_BRAND || "Zana";
 
   return (
     <div className="relative min-h-screen">

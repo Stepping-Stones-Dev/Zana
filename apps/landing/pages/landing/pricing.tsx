@@ -2,9 +2,9 @@ import { useState } from "react";
 import DefaultLayout from "@/layouts/default";
 import { Button } from "@heroui/button";
 import { Tabs, Tab, Card, CardBody, Accordion, AccordionItem } from "@heroui/react";
-import { useTranslation } from "@sam/i18n";
+import { useTranslation } from "@zana/i18n";
 import NextLink from "next/link";
-import { BASE_PLANS as LIB_BASE_PLANS, computePlanAmounts } from "@sam/payments";
+import { BASE_PLANS as LIB_BASE_PLANS, computePlanAmounts } from "@zana/payments";
 
 type Plan = {
   id: "standard" | "pro" | "org";

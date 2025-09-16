@@ -1,4 +1,4 @@
-import { firestore } from "@sam/auth/server";
+import { firestore } from "@zana/auth/server";
 import { computePlanAmounts, getPlanById, type PlanId } from "../index.js";
 import type { ProviderName } from "../index.js";
 

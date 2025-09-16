@@ -3,7 +3,7 @@ import { Link } from "@heroui/link";
 import { Head } from "./head";
 
 import { Navbar } from "@/components/navbar";
-import { FloatingLanguage } from "@sam/i18n";
+import { FloatingLanguage } from "@zana/i18n";
 
 export default function DefaultLayout({
   children,

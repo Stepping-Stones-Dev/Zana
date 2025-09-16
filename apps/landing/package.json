@@ -1,5 +1,5 @@
 {
-  "name": "@sam/landing",
+  "name": "@zana/landing",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -16,8 +16,8 @@
     "@heroui/theme": "^2.4.6",
     "@heroui/button": "^2.2.24",
     "@heroui/input": "2.4.9",
-    "@sam/i18n": "workspace:*",
-    "@sam/ui": "workspace:*",
+    "@zana/i18n": "workspace:*",
+    "@zana/ui": "workspace:*",
     "next-themes": "0.4.6",
     "tailwindcss": "3.4.16"
   }

@@ -355,21 +355,21 @@
     },
     "faq": {
       "sectionTitle": "FAQs",
-      "sectionIntro": "Find out about SAM and billing. For enterprise licensing or procurement, contact us.",
+      "sectionIntro": "Find out about Zana and billing. For enterprise licensing or procurement, contact us.",
       "contactUs": "contact us",
       "readRefundPolicy": "Refund Policy",
       "items": {
         "whatIsPro": {
-          "title": "What is SAM?",
-          "body": "SAM (School Administration Manager) is an all-in-one school management platform for admissions, attendance, exams, finance, communication, and analytics."
+          "title": "What is Zana?",
+          "body": "Zana (School Administration Manager) is an all-in-one school management platform for admissions, attendance, exams, finance, communication, and analytics."
         },
         "freeUpdates": {
           "title": "What does “free updates” mean?",
           "body": "All plans receive ongoing product improvements and security patches at no extra cost during your active plan period."
         },
         "requiredVersion": {
-          "title": "What do I need to run SAM?",
-          "body": "SAM is a cloud-hosted service. You only need a modern browser and internet access. Our mobile apps are optional."
+          "title": "What do I need to run Zana?",
+          "body": "Zana is a cloud-hosted service. You only need a modern browser and internet access. Our mobile apps are optional."
         },
         "teamOrgPlans": {
           "title": "How do user limits work?",
@@ -380,8 +380,8 @@
           "body": "We can customize user limits and pricing for larger institutions."
         },
         "commercialUse": {
-          "title": "Can SAM be used by private schools?",
-          "body": "Yes. SAM supports public, private, and international schools with localized features and payments."
+          "title": "Can Zana be used by private schools?",
+          "body": "Yes. Zana supports public, private, and international schools with localized features and payments."
         },
         "perProjectLicense": {
           "title": "Do I need a separate plan for each school?",
@@ -397,7 +397,7 @@
         },
         "refundPolicy": {
           "title": "What is your refund policy?",
-          "body": "If you're not satisfied with SAM, contact us within 7 days of purchase for a full refund."
+          "body": "If you're not satisfied with Zana, contact us within 7 days of purchase for a full refund."
         },
         "stillHaveQuestions": {
           "title": "Still have questions?",

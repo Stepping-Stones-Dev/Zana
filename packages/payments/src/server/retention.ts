@@ -1,4 +1,4 @@
-import { firestore } from "@sam/auth/server";
+import { firestore } from "@zana/auth/server";
 
 export async function retentionCleanupFailedCharges(days = 180) {
   const db = firestore();

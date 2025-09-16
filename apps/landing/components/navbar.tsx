@@ -13,11 +13,11 @@ import { useEffect, useState } from "react";
 import Router from "next/router";
 // Defer loading of auth-related UI to a separate chunk
 import dynamic from "next/dynamic";
-import { ThemeSwitch } from "@sam/ui";
-import { Logo } from "@sam/ui";
-import { useTranslation } from "@sam/i18n";
+import { ThemeSwitch } from "@zana/ui";
+import { Logo } from "@zana/ui";
+import { useTranslation } from "@zana/i18n";
 
-const NavAuthStatus = dynamic(() => import("@sam/auth").then(m => m.NavAuthStatus), { ssr: false });
+const NavAuthStatus = dynamic(() => import("@zana/auth").then(m => m.NavAuthStatus), { ssr: false });
 
 export const Navbar = () => {
   const { t, locale } = useTranslation();

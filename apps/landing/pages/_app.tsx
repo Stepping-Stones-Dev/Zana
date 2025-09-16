@@ -4,13 +4,13 @@ import dynamic from "next/dynamic";
 import {HeroUIProvider} from "@heroui/system";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-import { I18nProvider } from "@sam/i18n";
+import { I18nProvider } from "@zana/i18n";
 
 import { fontSans, fontMono } from "@/config/fonts";
 import "@/styles/globals.css";
 
 // Lazy-load AuthProvider (and thus Firebase) only on private routes
-const AuthProvider = dynamic(() => import("@sam/auth").then(m => m.AuthProvider), {
+const AuthProvider = dynamic(() => import("@zana/auth").then(m => m.AuthProvider), {
   ssr: false,
   // Render children directly while loading to avoid blocking navigation
   loading: ({ children }: any) => <>{children}</>,

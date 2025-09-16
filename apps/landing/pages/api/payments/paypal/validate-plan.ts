@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { paypalValidatePlan } from "@sam/payments/server";
+import { paypalValidatePlan } from "@zana/payments/server";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "GET") {

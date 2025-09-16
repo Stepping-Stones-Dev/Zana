@@ -1,13 +1,15 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "remoteCache": {
+    "enabled": true
+  },
   "tasks": {
     "build": {
       "dependsOn": [
         "^build"
       ],
       "outputs": [
-        "dist/**",
-        ".next/**"
+        "dist/**"
       ]
     },
     "dev": {
