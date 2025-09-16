@@ -22,8 +22,6 @@
     "react": ">=18"
   },
   "dependencies": {
-    "@paypal/checkout-server-sdk": "1.0.3",
-    "@zana/i18n": "workspace:*",
-    "@zana/auth": "workspace:*"
+    "@zana/i18n": "workspace:*"
   }
 }
