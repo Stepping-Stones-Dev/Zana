@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useTranslation } from "./I18nProvider.js";
+import { useTranslation } from "./I18nProvider";
 
 function setNextLocaleCookie(locale: string) {
   try {

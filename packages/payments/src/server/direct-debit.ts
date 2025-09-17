@@ -1,6 +1,6 @@
 import { firestore } from "@zana/auth/server";
-import { createSubscription } from "./subscriptions.js";
-import { getProvider, makeAccountNumber, type ProviderName, type PlanId } from "../index.js";
+import { createSubscription } from "./subscriptions";
+import { getProvider, makeAccountNumber, type ProviderName, type PlanId } from "../index";
 
 export async function initiateDirectDebit(params: {
   email: string;
@@ -11,7 +11,7 @@ export async function initiateDirectDebit(params: {
   locale?: string;
 }) {
   const { email, phone, planId, billing, provider, locale } = params;
-  const db = firestore();
+  const db = firestore!;
   const prov = getProvider(provider || "mobile_money");
   const mandate = await prov.initiateMandate({ email: email.toLowerCase(), phone, planId, billing, locale });
 

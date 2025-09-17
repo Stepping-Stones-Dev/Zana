@@ -1,0 +1,1 @@
+{"root":["./src/client.ts","./src/index.ts","./src/server.ts","./src/lib/firebase-admin.ts","./src/lib/firebase.ts","./src/react/authprovider.tsx","./src/react/navauthstatus.tsx","./src/react/useauth.ts"],"errors":true,"version":"5.6.3"}

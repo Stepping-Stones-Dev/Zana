@@ -45,7 +45,7 @@ export const PesapalProvider: PaymentProvider = {
 		if (!accessToken) throw new Error(`Pesapal token missing in response: ${JSON.stringify(tokenJson)}`);
 
 		// 2) Amount from pricing
-		const { computePlanAmounts } = await import("./pricing.js");
+		const { computePlanAmounts } = await import("./pricing");
 		const amounts = computePlanAmounts(planId as any, billing);
 		const amountKES = billing === "monthly" ? amounts.monthlyKES : amounts.yearlyKES;
 		const pubBase = process.env.PUBLIC_BASE_URL || "http://localhost:3000";
@@ -171,6 +171,7 @@ export function getProvider(name: ProviderName): PaymentProvider {
 	}
 }
 
-export { computePlanAmounts, getPlanById, BASE_PLANS, type PlanId } from "./pricing.js";
-export { PayPalButton } from "./react/PayPalButton.js";
-export { PesapalButton } from "./react/PesapalButton.js";
+export { computePlanAmounts, getPlanById, BASE_PLANS, type PlanId } from "./pricing";
+export { PayPalButton } from "./react/PayPalButton";
+export { PesapalButton } from "./react/PesapalButton";
+export { useCheckout } from "./react/useCheckout";

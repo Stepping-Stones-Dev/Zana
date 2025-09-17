@@ -5,7 +5,7 @@
     "declaration": true,
     "emitDeclarationOnly": false,
     "noEmit": false,
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "module": "ESNext"
   },
   "include": ["src/**/*"]

@@ -4,7 +4,7 @@ import { SwitchProps, useSwitch } from "@heroui/switch";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 
-import { SunFilledIcon, MoonFilledIcon } from "./icons.js";
+import { SunFilledIcon, MoonFilledIcon } from "./icons";
 
 export interface ThemeSwitchProps {
   className?: string;

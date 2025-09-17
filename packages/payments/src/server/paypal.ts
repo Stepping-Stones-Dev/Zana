@@ -37,6 +37,16 @@ export async function paypalCreateSubscription(params: { planId: string; email?:
   }
 }
 
+export const PayPalProvider = {
+  async initiateMandate(params: { planId: string; email?: string; billing?: string }) {
+    const result = await paypalCreateSubscription(params);
+    return {
+      ...result,
+      hostedUrl: 'approve' in result ? result.approve : '#'
+    };
+  }
+};
+
 export async function paypalValidatePlan(planId: string): Promise<
   | { valid: true; plan: any }
   | { valid: false; reason: string; status?: number; debug_id?: string }

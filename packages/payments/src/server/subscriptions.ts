@@ -1,6 +1,6 @@
 import { firestore } from "@zana/auth/server";
-import { computePlanAmounts, getPlanById, type PlanId } from "../index.js";
-import type { ProviderName } from "../index.js";
+import { computePlanAmounts, getPlanById, type PlanId } from "../index";
+import type { ProviderName } from "../index";
 
 export type SubscriptionStatus = "active" | "canceled" | "past_due" | "incomplete";
 
@@ -44,7 +44,7 @@ export async function createSubscription(params: {
   const { amountKES } = computePlanAmounts(params.planId, params.billing);
   const now = new Date();
   const { start, end } = nextPeriodStartEnd(now, params.billing);
-  const db = firestore();
+  const db = firestore!;
   const id = `sub_${Date.now()}`;
   const rec: Subscription = {
     id,
@@ -65,7 +65,7 @@ export async function createSubscription(params: {
 }
 
 export async function cancelSubscription(id: string) {
-  const db = firestore();
+  const db = firestore!;
   await db
     .collection("subscriptions")
     .doc(id)
@@ -73,7 +73,7 @@ export async function cancelSubscription(id: string) {
 }
 
 export async function listDueSubscriptions(now = new Date()) {
-  const db = firestore();
+  const db = firestore!;
   const snap = await db.collection("subscriptions").where("status", "==", "active").get();
   const res: Subscription[] = [];
   snap.forEach((doc: any) => {
@@ -86,7 +86,7 @@ export async function listDueSubscriptions(now = new Date()) {
 export async function rollSubscriptionPeriod(id: string, billing: "monthly" | "yearly") {
   const now = new Date();
   const { start, end } = nextPeriodStartEnd(now, billing);
-  const db = firestore();
+  const db = firestore!;
   await db.collection("subscriptions").doc(id).set(
     {
       currentPeriodStart: start,

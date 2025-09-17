@@ -1,7 +1,7 @@
 import { firestore } from "@zana/auth/server";
 
 export async function handleMpesaCallback(payload: any) {
-  const db = firestore();
+  const db = firestore!;
   const id = `cb_${Date.now()}`;
   await db.collection("mpesaCallbacks").doc(id).set({ payload, receivedAt: new Date().toISOString() });
   const resultCode = payload?.Body?.stkCallback?.ResultCode;

@@ -1,5 +1,5 @@
 {
-  "brand": "ACME",
+  "brand": "Zana",
   "nav": {
     "features": "Vipengele",
     "pricing": "Bei",
@@ -24,34 +24,40 @@
   },
   "home": {
     "hero": {
-  "smart": "Mikondo",
-  "empower": "Kuwawezesha",
-  "line1Rest": "ya Kazi Mahiri ya",
-  "line2Rest": "Walimu."
+      "tagline": "Kituo cha Akaunti v1.0 🚀",
+      "headline1": "Kuwaachia walimu",
+      "headline2": "wajikite kwenye jambo kuu zaidi:",
+      "headline3": "kufundisha.",
+      "subheading": "Zana ni kifaa kamili kinachowapa shule nguvu za kupanga, kudhibiti, na kukua huku wakiwaruhusu walimu kulenga kujenga mustakabali bora."
     },
-    "subheading": "Nzuri, ya haraka, na rahisi kutumia. Uendeshaji wa shule ukiambatana na uotomatiki ili kuandikisha, kusimamia majukumu, na kuweka rekodi nadhifu.",
     "cta": {
-      "freeTrial": "Jaribio la Bure",
-      "github": "GitHub"
-    },
-    "search": {
-      "example": "Sayansi ya Msingi jil. 4"
-    },
-    "tabs": {
-      "inventory": "Hesabu",
-      "transport": "Usafiri",
-      "timetables": "Ratiba",
-      "reports": "Ripoti"
-    },
-    "profile": {
-      "follow": "Fuata",
-      "following": "Wanao Fuatwa",
-      "followers": "Wafuasi"
+      "getStarted": "Anza Sasa",
+      "learnMore": "Jifunze Zaidi"
     },
     "floating": {
-      "manageInventory": "Dhibiti hesabu yako",
-      "onboardStudents": "Andikisha wanafunzi",
-      "trackProgress": "Fuatilia maendeleo"
+      "organization": {
+        "name": "Shule ya Mwalimu",
+        "domain": "mwalimu.zana.africa",
+        "status": "Inatumika",
+        "users": "Walimu {{count}}",
+        "plan": "Mpango wa shule",
+        "price": "Sh24,000/mwezi",
+        "teams": "Idara {{count}}",
+        "apps": "Zana {{count}}"
+      },
+      "billing": {
+        "title": "Bili ya Kila Mwezi",
+        "dueDate": "Inahitajika baada ya siku 5",
+        "amount": "Sh24,000.00",
+        "autoPayment": "Malipo ya kiotomatiki yamewezeshwa",
+        "paymentMethod": "M-Pesa ****2424",
+        "payNow": "Lipa Sasa"
+      },
+      "tags": {
+        "multiTenant": "Shule nyingi",
+        "ssoReady": "SSO Iko Tayari",
+        "autoBilling": "Bili-otomatiki"
+      }
     }
   }
 }

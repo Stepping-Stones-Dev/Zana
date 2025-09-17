@@ -1,7 +1,7 @@
 import { firestore } from "@zana/auth/server";
 
 export async function retentionCleanupFailedCharges(days = 180) {
-  const db = firestore();
+  const db = firestore!;
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - days);
   const snap = await db.collection("subscriptionCharges").where("status", "==", "FAILED").get();
