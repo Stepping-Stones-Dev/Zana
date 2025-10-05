@@ -201,7 +201,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download previous SBOM (if any)
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v6
         with:
           workflow: security.yml
           name: sbom
