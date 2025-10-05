@@ -146,8 +146,8 @@ jobs:
       - name: pnpm audit (non-blocking low/med)
         run: |
           pnpm audit --json > audit.json || true
-          # Fail only if high/critical present
-          node -e "const r=require('./audit.json'); const probs=(r.vulnerabilities||[]).filter(v=>['high','critical'].includes(v.severity)); if(probs.length){console.error('High/Critical vulns:',probs.length); process.exit(1)} else {console.log('No high/critical vulns')}}"
+          # Fail only if high/critical present (handled by script)
+          node scripts/pnpm-audit-check.cjs
       - uses: actions/upload-artifact@v4
         with:
           name: audit-report
