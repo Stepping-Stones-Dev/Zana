@@ -35,10 +35,9 @@ jobs:
         shell: bash
         run: |
           if ! command -v pnpm >/dev/null 2>&1; then
-            echo "pnpm not found on PATH, installing via corepack fallback";
-            corepack enable || true
-            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
-            command -v pnpm || { echo 'pnpm still unavailable'; exit 1; }
+            echo "pnpm not found; installing globally via npm";
+            npm install -g pnpm@10.17.1
+            pnpm -v || { echo 'pnpm still unavailable after install'; exit 1; }
           else
             echo "pnpm detected: $(pnpm -v)";
           fi
@@ -129,7 +128,6 @@ jobs:
         with:
           script: |
             const body = process.env.TABLE || 'Coverage table unavailable';
-            const { context } = github;
             // Try to find an existing comment to update
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
