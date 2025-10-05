@@ -24,9 +24,8 @@ jobs:
         shell: bash
         run: |
           if ! command -v pnpm >/dev/null 2>&1; then
-            echo "pnpm not found on PATH, installing via corepack fallback";
-            corepack enable || true
-            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+            echo "pnpm not found; installing via npm";
+            npm install -g pnpm@10.17.1
           fi
       - uses: actions/setup-node@v4
         with:
@@ -35,13 +34,6 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Generate SBOM
         run: pnpm sbom
-      - name: Install cosign
-        run: |
-          curl -sSL https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 -o cosign && chmod +x cosign && sudo mv cosign /usr/local/bin/
-      - name: Sign SBOM
-        env:
-          COSIGN_EXPERIMENTAL: 1
-        run: node scripts/sign-artifacts.cjs --sbom sbom.json
       - name: Hash SBOM
         id: hash
         run: echo "hash=$(sha256sum sbom.json | cut -d ' ' -f1)" >> $GITHUB_OUTPUT
@@ -50,11 +42,6 @@ jobs:
         with:
           name: sbom
           path: sbom.json
-      - name: Upload SBOM signature
-        uses: actions/upload-artifact@v4
-        with:
-          name: sbom-signature
-          path: sbom.json.sig
 
   osv:
     runs-on: ubuntu-latest
@@ -67,8 +54,7 @@ jobs:
         shell: bash
         run: |
           if ! command -v pnpm >/dev/null 2>&1; then
-            corepack enable || true
-            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+            npm install -g pnpm@10.17.1
           fi
       - uses: actions/setup-node@v4
         with:
@@ -102,8 +88,7 @@ jobs:
         shell: bash
         run: |
           if ! command -v pnpm >/dev/null 2>&1; then
-            corepack enable || true
-            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+            npm install -g pnpm@10.17.1
           fi
       - uses: actions/setup-node@v4
         with:
@@ -152,8 +137,7 @@ jobs:
         shell: bash
         run: |
           if ! command -v pnpm >/dev/null 2>&1; then
-            corepack enable || true
-            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+            npm install -g pnpm@10.17.1
           fi
       - uses: actions/setup-node@v4
         with:
@@ -181,13 +165,6 @@ jobs:
       - name: Build image
         if: ${{ steps.detect.outputs.found == 'true' }}
         run: docker build -t local/app:ci .
-      - name: Sign image (cosign keyless)
-        if: ${{ steps.detect.outputs.found == 'true' }}
-        env:
-          COSIGN_EXPERIMENTAL: 1
-        run: |
-          curl -sSL https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 -o cosign && chmod +x cosign && sudo mv cosign /usr/local/bin/
-          node scripts/sign-artifacts.cjs --image local/app:ci
       - name: Trivy FS scan
         if: ${{ steps.detect.outputs.found == 'true' }}
         uses: aquasecurity/trivy-action@master
@@ -217,8 +194,7 @@ jobs:
         shell: bash
         run: |
           if ! command -v pnpm >/dev/null 2>&1; then
-            corepack enable || true
-            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+            npm install -g pnpm@10.17.1
           fi
       - run: pnpm install --frozen-lockfile
       - name: License Policy
