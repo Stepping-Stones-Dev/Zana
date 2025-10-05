@@ -20,6 +20,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with: { version: 10.17.1 }
+      - name: Ensure pnpm available (fallback)
+        shell: bash
+        run: |
+          if ! command -v pnpm >/dev/null 2>&1; then
+            echo "pnpm not found on PATH, installing via corepack fallback";
+            corepack enable || true
+            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
@@ -55,6 +63,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with: { version: 10.17.1 }
+      - name: Ensure pnpm available (fallback)
+        shell: bash
+        run: |
+          if ! command -v pnpm >/dev/null 2>&1; then
+            corepack enable || true
+            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
@@ -83,6 +98,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with: { version: 10.17.1 }
+      - name: Ensure pnpm available (fallback)
+        shell: bash
+        run: |
+          if ! command -v pnpm >/dev/null 2>&1; then
+            corepack enable || true
+            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
@@ -126,6 +148,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with: { version: 10.17.1 }
+      - name: Ensure pnpm available (fallback)
+        shell: bash
+        run: |
+          if ! command -v pnpm >/dev/null 2>&1; then
+            corepack enable || true
+            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
@@ -184,6 +213,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with: { version: 10.17.1 }
+      - name: Ensure pnpm available (fallback)
+        shell: bash
+        run: |
+          if ! command -v pnpm >/dev/null 2>&1; then
+            corepack enable || true
+            corepack prepare pnpm@10.17.1 --activate || npm i -g pnpm@10.17.1
+          fi
       - run: pnpm install --frozen-lockfile
       - name: License Policy
         run: pnpm check:licenses > license-report.txt && npx license-checker --json > license-report.json || true
