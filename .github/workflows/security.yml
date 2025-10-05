@@ -1,0 +1,224 @@
+name: Security Pipeline
+on:
+  pull_request: {}
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * *'
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    outputs:
+      sbom-hash: ${{ steps.hash.outputs.hash }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.17.1 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+      - name: Generate SBOM
+        run: pnpm sbom
+      - name: Install cosign
+        run: |
+          curl -sSL https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 -o cosign && chmod +x cosign && sudo mv cosign /usr/local/bin/
+      - name: Sign SBOM
+        env:
+          COSIGN_EXPERIMENTAL: 1
+        run: node scripts/sign-artifacts.cjs --sbom sbom.json
+      - name: Hash SBOM
+        id: hash
+        run: echo "hash=$(sha256sum sbom.json | cut -d ' ' -f1)" >> $GITHUB_OUTPUT
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.json
+      - name: Upload SBOM signature
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-signature
+          path: sbom.json.sig
+
+  osv:
+    runs-on: ubuntu-latest
+    needs: prep
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.17.1 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - run: pnpm install --frozen-lockfile
+      - name: OSV Scan
+        uses: google/osv-scanner-action@v1.7.3
+        with:
+          scan-args: -r .
+          fail-on-severity: HIGH
+      - name: OSV JSON
+        run: |
+          npx --yes osv-scanner --format json -r . > osv-results.json || echo '{"results":[]}' > osv-results.json
+      - name: Upload OSV Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: osv-results
+          path: osv-results.json
+
+  codeql:
+    runs-on: ubuntu-latest
+    needs: prep
+    strategy:
+      matrix:
+        language: [javascript]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.17.1 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: Init CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+      - run: pnpm install --frozen-lockfile
+      - name: Analyze
+        uses: github/codeql-action/analyze@v3
+
+  semgrep:
+    runs-on: ubuntu-latest
+    needs: prep
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Semgrep
+        run: pip install semgrep
+      - name: Semgrep Scan
+        run: |
+          semgrep --config p/owasp-top-ten --config p/nodejs --severity=ERROR --error --timeout 120 --exclude semgrep.ignore --sarif -o semgrep.sarif || exit 1
+      - name: Upload Semgrep SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: semgrep.sarif
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    needs: prep
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          args: detect --redact --no-color --baseline-path=gitleaks-baseline.json
+
+  audit:
+    runs-on: ubuntu-latest
+    needs: prep
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.17.1 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - run: pnpm install --frozen-lockfile
+      - name: pnpm audit (non-blocking low/med)
+        run: |
+          pnpm audit --json > audit.json || true
+          # Fail only if high/critical present
+          node -e "const r=require('./audit.json'); const probs=(r.vulnerabilities||[]).filter(v=>['high','critical'].includes(v.severity)); if(probs.length){console.error('High/Critical vulns:',probs.length); process.exit(1)} else {console.log('No high/critical vulns')}}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audit-report
+          path: audit.json
+
+  trivy:
+    runs-on: ubuntu-latest
+    needs: prep
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect Dockerfile
+        id: detect
+        run: |
+          if [ -f Dockerfile ]; then echo "found=true" >> $GITHUB_OUTPUT; else echo "found=false" >> $GITHUB_OUTPUT; fi
+      - name: Build image
+        if: ${{ steps.detect.outputs.found == 'true' }}
+        run: docker build -t local/app:ci .
+      - name: Sign image (cosign keyless)
+        if: ${{ steps.detect.outputs.found == 'true' }}
+        env:
+          COSIGN_EXPERIMENTAL: 1
+        run: |
+          curl -sSL https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 -o cosign && chmod +x cosign && sudo mv cosign /usr/local/bin/
+          node scripts/sign-artifacts.cjs --image local/app:ci
+      - name: Trivy FS scan
+        if: ${{ steps.detect.outputs.found == 'true' }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: .
+          severity: 'CRITICAL,HIGH'
+          ignore-unfixed: true
+          exit-code: '1'
+      - name: Trivy Image scan
+        if: ${{ steps.detect.outputs.found == 'true' }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'local/app:ci'
+          severity: 'CRITICAL,HIGH'
+          ignore-unfixed: true
+          exit-code: '1'
+
+  licenses:
+    runs-on: ubuntu-latest
+    needs: prep
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.17.1 }
+      - run: pnpm install --frozen-lockfile
+      - name: License Policy
+        run: pnpm check:licenses > license-report.txt && npx license-checker --json > license-report.json || true
+      - name: Upload License Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: license-report
+          path: |
+            license-report.txt
+            license-report.json
+
+  sbom-diff:
+    runs-on: ubuntu-latest
+    needs: prep
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download previous SBOM (if any)
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: security.yml
+          name: sbom
+          path: prev-sbom
+          if_no_artifact_found: ignore
+      - name: Compare SBOM
+        run: |
+          if [ -f prev-sbom/sbom.json ]; then
+            echo "Comparing SBOMs"
+            diff -u <(jq -S '.components[]?.name' prev-sbom/sbom.json | sort) <(jq -S '.components[]?.name' sbom.json | sort) || true
+          else
+            echo "No previous SBOM to compare"
+          fi
+
+  gate:
+    runs-on: ubuntu-latest
+    needs: [osv, codeql, semgrep, gitleaks, licenses, sbom-diff, audit]
+    steps:
+      - name: Gate Summary
+        run: echo "All required security jobs completed successfully." 

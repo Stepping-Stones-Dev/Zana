@@ -1,42 +1,26 @@
-
 # Zana Monorepo
 
-This monorepo contains all core apps and packages for the Zana platform.
+[![CI](https://github.com/Stepping-Stones-Dev/sam/actions/workflows/ci.yml/badge.svg)](https://github.com/Stepping-Stones-Dev/sam/actions/workflows/ci.yml)
+[![Security Pipeline](https://github.com/Stepping-Stones-Dev/sam/actions/workflows/security.yml/badge.svg)](https://github.com/Stepping-Stones-Dev/sam/actions/workflows/security.yml)
 
-## Structure
+Initial scaffolding per Architecture Blueprint Section 27 (Kickoff).
 
-- `apps/` — Application frontends (e.g., landing, dashboard-shell)
-- `packages/` — Shared libraries, UI, types, payments, i18n, etc.
-- `docs/` — Documentation, architecture, and onboarding
+Current highlights:
+- Unified telemetry package (`@zana/telemetry`) providing events, logging, sanitization utilities.
+- 100% test coverage enforced via Jest thresholds.
+- Consolidated security pipeline (OSV, CodeQL, Semgrep, Gitleaks, license policy, SBOM diff, pnpm audit, optional Trivy).
+- CI targets Node 22+ only (dropped 18/20) with coverage comment.
 
-## Getting Started
+## Quick Start
+```bash
+pnpm install
+pnpm build --filter=@zana/events --filter=@zana/logging
+```
 
-1. Install dependencies:
-   ```sh
-   pnpm install
-   ```
-2. Build all packages:
-   ```sh
-   pnpm build:all
-   ```
-3. Start development:
-   ```sh
-   pnpm dev
-   ```
+## Packages
+- `@zana/telemetry`: Unified events + logging + sanitize engine.
 
-## Scripts
+See `docs/SECURITY_PIPELINE.md` for security process and `packages/telemetry/README.md` for usage details.
 
-- `pnpm build:all` — Clean and build all packages/apps
-- `pnpm dev` — Start development server(s)
-- `pnpm lint` — Lint all packages/apps
-- `pnpm format` — Format all packages/apps
-- `pnpm test` — Run all tests
-- `pnpm changeset` — Manage versioning and changelogs
-
-## Contributing
-
-Please see the [docs/Architecture](./docs/Architecture/) folder for architecture, onboarding, and integration details.
-
-## License
-
-Licensed under the MIT license.
+## Next Steps
+Refer to `docs/SECURITY_PIPELINE.md` and `Zana.md` Section 27.9 for strategic tasks.

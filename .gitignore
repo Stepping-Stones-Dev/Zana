@@ -1,50 +1,158 @@
-# Ignore Next.js build output
-.next/
-apps/*/.next/
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+###############################################
+# Monorepo / Node / Build Artifacts          #
+###############################################
 
-# Dependencies
-node_modules
+# Dependency directories / package managers
+node_modules/
+**/node_modules/
 .pnp
 .pnp.js
+*.tgz
+package-lock.json
+yarn.lock
+*.npmrc
 
-# Local env files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# PNPM store (local cache)
+.pnpm-store/
 
-# Testing
-coverage
+# Build outputs (root & packages/apps)
+dist/
+**/dist/
+build/
+**/build/
+out/
+.next/
+apps/*/.next/
+storybook-static/
 
-# Certificates
-certs/*.pem
+# TypeScript incremental build info
+*.tsbuildinfo
+**/*.tsbuildinfo
 
-# Turbo
+# Turbo / Nx caches & reports
+.turbo/
 .turbo
+turbo-report.json
+.nx/
 
-# Vercel
-.vercel
+# Coverage / test reports
+coverage/
+**/coverage/
+reports/
+*.lcov
+jest-html-reporters-*.html
+nyc_output/
+.nyc_output/
 
-build
-dist
-
-build/
-
-# Centralized build outputs
-/dist/
-build/
-
-# Turbo logs
-/logs/
-
-
-# Debug
+# Logs & diagnostics
+logs/
+**/logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+isolate-*.log
+heapdump-*.heapsnapshot
+profile-*.cpuprofile
 
-# Misc
-.DS_Store
+# Environment / secret files
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env.backup
+
+# Security scan / SBOM outputs
+sbom.json
+sbom-summary.json
+security-summary.json
+*.sarif
+trivy-results.*
+gitleaks-report.*
+osv-results.*
+dependency-check-report.*
+
+# Signatures / attestations
+*.sig
+*.attestation
+cosign.*
+
+# Certificates / keys (keep real secrets out of repo)
+certs/*.pem
+certs/*.crt
+certs/*.key
 *.pem
+*.p12
+*.der
+*.crt
+*.key
+*.csr
+*.kdb
+*.jks
+
+# Vercel / deployment metadata
+.vercel/
+
+# Editor / IDE settings
+.idea/
+.history/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.swp
+*.swo
+
+# OS / system junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temp / cache directories
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+**/.cache/
+.eslintcache
+.stylelintcache
+.ts-node
+.ava-cache
+.parcel-cache
+.rpt2_cache/
+.rts2_cache_*/
+
+# Generated / ephemeral code
+generated/
+**/generated/
+
+# Patch & diff scratch files
+*.diff
+*.patch
+
+# Local DB / data (if created during dev)
+data/
+sqlite.db*
+*.sqlite
+
+# Archives / bundles
+*.tar.gz
+*.tgz
+docker-image.tar
+
+# SBOM cache directory
+.sbom-cache/
+
+# Optional: ignore per-package lockfiles (uncomment if desired)
+# **/pnpm-lock.yaml
+
+###############################################
+# End of .gitignore                           #
+###############################################

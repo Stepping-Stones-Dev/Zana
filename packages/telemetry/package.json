@@ -1,0 +1,55 @@
+{
+  "name": "@zana/telemetry",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=22"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./events": {
+      "import": "./dist/events/index.js",
+      "types": "./dist/events/index.d.ts"
+    },
+    "./logging": {
+      "import": "./dist/logging/index.js",
+      "types": "./dist/logging/index.d.ts"
+    },
+    "./sanitize": {
+      "import": "./dist/sanitize/index.js",
+      "types": "./dist/sanitize/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "zana-telemetry": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+  "lint": "eslint src/**/*.{ts,tsx}",
+  "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "telemetry:cli": "node dist/cli.js list",
+    "generate:telemetry": "node dist/cli.js generate-docs",
+    "test": "echo 'Tests run at root'"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "fast-redact": "^3.5.0",
+    "prom-client": "^15.1.3",
+    "safe-stable-stringify": "^2.5.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

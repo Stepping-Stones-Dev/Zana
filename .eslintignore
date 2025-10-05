@@ -1,0 +1,6 @@
+# Root ignore patterns (packages can add their own .eslintignore if needed)
+node_modules
+Dist
+**/dist
+coverage
+.next

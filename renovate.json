@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "rangeStrategy": "bump",
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "groupName": "minor & patch deps",
+      "matchUpdateTypes": ["minor", "patch"],
+      "schedule": ["after 2am on monday"]
+    },
+    {
+      "matchDatasources": ["npm"],
+      "matchPackagePatterns": ["^@types/"],
+      "groupName": "types",
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ]
+}

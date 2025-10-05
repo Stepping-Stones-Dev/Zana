@@ -1,0 +1,22 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "[pre-commit] Running security & quality gates"
+
+# Secrets scan (uses baseline)
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks detect --redact --no-color --baseline-path=gitleaks-baseline.json || { echo '[pre-commit] gitleaks failed'; exit 1; }
+else
+  echo '[pre-commit] gitleaks not installed (skip)'
+fi
+
+# Lint
+pnpm lint || exit 1
+
+# Type check (fast noEmit)
+pnpm typecheck || exit 1
+
+# Tests (only changed packages)
+pnpm test:changed || exit 1
+
+echo "[pre-commit] All checks passed"

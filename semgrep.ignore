@@ -1,0 +1,4 @@
+# Paths or globs to ignore for Semgrep scans
+# Example:
+# node_modules/
+# dist/

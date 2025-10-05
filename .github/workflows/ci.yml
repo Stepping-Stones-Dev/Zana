@@ -1,0 +1,147 @@
+name: CI
+on:
+  pull_request: {}
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - node: 22.x
+            name: node22
+    name: build-test (Node ${{ matrix.node }})
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.17.1
+
+      - name: Get pnpm store path
+        id: store
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.store.outputs.STORE_PATH }}
+          key: pnpm-store-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      - name: Run tests (with coverage)
+        run: pnpm test --silent --coverage --coverageReporters=text --coverageReporters=lcov --coverageReporters=json-summary
+      - name: Extract coverage summary
+        id: coverage
+        run: |
+          SUMMARY=$(grep -E "^All files" -r coverage/lcov-report/coverage-summary* 2>/dev/null || grep -E "^All files" coverage/coverage-summary* || true)
+          if [ -f coverage/coverage-summary.json ]; then
+            BR=$(jq '.total.branches.pct' coverage/coverage-summary.json); LN=$(jq '.total.lines.pct' coverage/coverage-summary.json); ST=$(jq '.total.statements.pct' coverage/coverage-summary.json); FN=$(jq '.total.functions.pct' coverage/coverage-summary.json);
+            echo "lines=${LN}" >> $GITHUB_OUTPUT
+            echo "branches=${BR}" >> $GITHUB_OUTPUT
+            echo "functions=${FN}" >> $GITHUB_OUTPUT
+            echo "statements=${ST}" >> $GITHUB_OUTPUT
+          fi
+          echo "summary_line=${SUMMARY}" >> $GITHUB_OUTPUT
+
+      - name: Upload coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.name }}
+          path: coverage
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "Build & test workflow complete for Node ${{ matrix.node }}."
+
+  coverage-comment:
+    needs: build-test
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download coverage node22
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-node22
+          path: cov/node22
+      - name: Build matrix coverage table
+        id: table
+        run: |
+          gen_row () {
+            local label="$1"; local dir="$2";
+            local f="cov/${dir}/coverage/coverage-summary.json";
+            if [ -f "$f" ]; then
+              local L=$(jq -r '.total.lines.pct' "$f");
+              local B=$(jq -r '.total.branches.pct' "$f");
+              local F=$(jq -r '.total.functions.pct' "$f");
+              local S=$(jq -r '.total.statements.pct' "$f");
+              echo "| ${label} | ${L} | ${B} | ${F} | ${S} |";
+            else
+              echo "| ${label} | n/a | n/a | n/a | n/a |";
+            fi
+          }
+          echo "### Coverage Summary (Matrix)" > table.md
+          echo "| Node | Lines | Branches | Functions | Statements |" >> table.md
+          echo "|------|-------|----------|-----------|------------|" >> table.md
+          gen_row "22.x" node22 >> table.md
+          echo "TABLE<<EOF" >> $GITHUB_OUTPUT
+          cat table.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      - name: Post PR comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = process.env.TABLE || 'Coverage table unavailable';
+            const { context } = github;
+            // Try to find an existing comment to update
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100
+            });
+            const marker = '### Coverage Summary (Matrix)';
+            const existing = comments.find(c => c.body && c.body.startsWith(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            }
+        env:
+          TABLE: ${{ steps.table.outputs.TABLE }}
