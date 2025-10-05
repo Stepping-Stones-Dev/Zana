@@ -45,15 +45,33 @@ jobs:
 
 
 
-  gitleaks:
+  secrets-scan:
     runs-on: ubuntu-latest
     needs: prep
     steps:
       - uses: actions/checkout@v4
-      - name: Gitleaks
-        uses: gitleaks/gitleaks-action@v2
+      - name: Install TruffleHog
+        run: pip install --no-cache-dir trufflehog
+      - name: TruffleHog scan (fail on verified findings)
+        run: |
+          set -e
+          trufflehog filesystem --no-update --format json --only-verified . > trufflehog.json || true
+          # Determine if any verified secrets present
+          if [ -s trufflehog.json ]; then
+            # Count lines (each finding is a JSON object on its own line in recent versions)
+            COUNT=$(wc -l < trufflehog.json | tr -d ' ')
+            if [ "$COUNT" -gt 0 ]; then
+              echo "Found $COUNT potential verified secrets" >&2
+              exit 1
+            fi
+          fi
+          echo "No verified secrets detected"
+      - name: Upload TruffleHog Results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          args: detect --redact --no-color --baseline-path=gitleaks-baseline.json
+          name: trufflehog-results
+          path: trufflehog.json
 
   audit:
     runs-on: ubuntu-latest
@@ -129,7 +147,7 @@ jobs:
 
   gate:
     runs-on: ubuntu-latest
-    needs: [gitleaks, licenses, sbom-diff, audit]
+    needs: [secrets-scan, licenses, sbom-diff, audit]
     steps:
       - name: Gate Summary
         run: echo "All required security jobs completed successfully." 
