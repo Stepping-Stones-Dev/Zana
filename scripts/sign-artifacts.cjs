@@ -22,13 +22,27 @@ function ensureCosign(){
 function signFile(exe, path){
   if (!existsSync(path)) { console.error('[sign] file not found', path); process.exit(1); }
   const sig = path + '.sig';
-  // Keyless (OIDC) if identity available; fallback to local key requirement.
-  const args = ['sign-blob','--yes', path];
-  console.log('[sign] signing', path);
-  const r = spawnSync(exe.split(' ')[0], exe.startsWith('npx')?exe.split(' ').slice(1).concat(args):args, { stdio: 'pipe' });
-  if (r.status !== 0){ console.error('[sign] sign failed'); process.exit(1); }
-  writeFileSync(sig, r.stdout);
-  console.log('[sign] wrote', sig);
+  const baseArgs = ['sign-blob','--yes'];
+  // If COSIGN_EXPERIMENTAL not set, warn (keyless often needs it in CI)
+  if (!process.env.COSIGN_EXPERIMENTAL) {
+    console.warn('[sign] COSIGN_EXPERIMENTAL not set; attempting anyway (keyless may fail)');
+  }
+  const args = baseArgs.concat(path);
+  console.log('[sign] signing', path, 'with', exe, 'args:', args.join(' '));
+  const parts = exe.split(' ');
+  const bin = parts[0];
+  const rest = parts.slice(1);
+  const r = spawnSync(bin, rest.concat(args), { encoding: 'utf8' });
+  if (r.status !== 0){
+    console.error('[sign] sign failed');
+    if (r.stderr) console.error('[sign] stderr:', r.stderr.toString());
+    if (r.stdout) console.error('[sign] stdout:', r.stdout.toString());
+    console.error('[sign] diagnostic: ensure OIDC token available (GITHUB_ACTIONS=true, permissions id-token: write) or provide keys');
+    process.exit(1);
+  }
+  const raw = r.stdout.toString().trim();
+  writeFileSync(sig, raw + '\n');
+  console.log('[sign] wrote signature', sig);
 }
 
 function signImage(exe, ref){
@@ -45,10 +59,13 @@ function main(){
   const argv = process.argv.slice(2);
   let sbom='sbom.json';
   let image=null;
+  let forceKeyless=false;
   for (let i=0;i<argv.length;i++){
     if (argv[i]==='--sbom') sbom = argv[++i];
     else if (argv[i]==='--image') image = argv[++i];
+    else if (argv[i]==='--keyless') forceKeyless = true;
   }
+  if (forceKeyless) process.env.COSIGN_EXPERIMENTAL = process.env.COSIGN_EXPERIMENTAL || '1';
   const exe = ensureCosign();
   if (sbom) signFile(exe, sbom);
   if (image) signImage(exe, image);

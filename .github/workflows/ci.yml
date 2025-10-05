@@ -4,14 +4,25 @@ on:
   push:
     branches: [ main ]
 
+# Concurrency: cancel in-progress runs for the same ref (except main keeps history)
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 permissions:
   contents: read
-  issues: write
-  pull-requests: write
+
+env:
+  PNPM_VERSION: 10.17.1
 
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    outputs:
+      lines: ${{ steps.coverage.outputs.lines }}
+      branches: ${{ steps.coverage.outputs.branches }}
+      functions: ${{ steps.coverage.outputs.functions }}
+      statements: ${{ steps.coverage.outputs.statements }}
     strategy:
       fail-fast: false
       matrix:
@@ -31,14 +42,14 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.17.1
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Ensure pnpm available (fallback)
         shell: bash
         run: |
           if ! command -v pnpm >/dev/null 2>&1; then
             echo "pnpm not found; installing globally via npm";
-            npm install -g pnpm@10.17.1
+            npm install -g pnpm@${PNPM_VERSION}
             pnpm -v || { echo 'pnpm still unavailable after install'; exit 1; }
           else
             echo "pnpm detected: $(pnpm -v)";
@@ -80,6 +91,24 @@ jobs:
           fi
           echo "summary_line=${SUMMARY}" >> $GITHUB_OUTPUT
 
+      - name: Coverage summary (job summary)
+        if: always()
+        run: |
+          {
+            echo '### Coverage Metrics';
+            if [ -n "${{ steps.coverage.outputs.lines }}" ]; then
+              echo '';
+              echo '| Metric | % |';
+              echo '|--------|---|';
+              echo "| Lines | ${{ steps.coverage.outputs.lines }} |";
+              echo "| Branches | ${{ steps.coverage.outputs.branches }} |";
+              echo "| Functions | ${{ steps.coverage.outputs.functions }} |";
+              echo "| Statements | ${{ steps.coverage.outputs.statements }} |";
+            else
+              echo 'No coverage metrics captured.';
+            fi
+          } >> $GITHUB_STEP_SUMMARY
+
       - name: Upload coverage artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -96,6 +125,10 @@ jobs:
     needs: build-test
     if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
     steps:
       - name: Download coverage node22
         uses: actions/download-artifact@v4
@@ -105,23 +138,40 @@ jobs:
       - name: Build matrix coverage table
         id: table
         run: |
-          gen_row () {
-            local label="$1"; local dir="$2";
-            local f="cov/${dir}/coverage/coverage-summary.json";
-            if [ -f "$f" ]; then
-              local L=$(jq -r '.total.lines.pct' "$f");
-              local B=$(jq -r '.total.branches.pct' "$f");
-              local F=$(jq -r '.total.functions.pct' "$f");
-              local S=$(jq -r '.total.statements.pct' "$f");
-              echo "| ${label} | ${L} | ${B} | ${F} | ${S} |";
-            else
-              echo "| ${label} | n/a | n/a | n/a | n/a |";
+          echo "Downloaded artifact tree (debug):" >&2
+          find cov -maxdepth 4 -type f -print >&2 || true
+
+          # Prefer direct outputs from build-test job (more reliable than artifact parsing)
+          LINES='${{ needs.build-test.outputs.lines }}'
+          BRANCHES='${{ needs.build-test.outputs.branches }}'
+          FUNCTIONS='${{ needs.build-test.outputs.functions }}'
+          STATEMENTS='${{ needs.build-test.outputs.statements }}'
+
+          # If any are empty, attempt to discover coverage-summary.json dynamically
+            if [ -z "$LINES" ] || [ -z "$BRANCHES" ] || [ -z "$FUNCTIONS" ] || [ -z "$STATEMENTS" ]; then
+              echo "Some coverage outputs missing; falling back to artifact scan" >&2
+              SUMMARY_FILE=$(find cov -name coverage-summary.json | head -n1 || true)
+              if [ -n "$SUMMARY_FILE" ]; then
+                echo "Using summary file: $SUMMARY_FILE" >&2
+                LINES=${LINES:-$(jq -r '.total.lines.pct' "$SUMMARY_FILE")}
+                BRANCHES=${BRANCHES:-$(jq -r '.total.branches.pct' "$SUMMARY_FILE")}
+                FUNCTIONS=${FUNCTIONS:-$(jq -r '.total.functions.pct' "$SUMMARY_FILE")}
+                STATEMENTS=${STATEMENTS:-$(jq -r '.total.statements.pct' "$SUMMARY_FILE")}
+              else
+                echo "No coverage-summary.json found in artifact" >&2
+              fi
             fi
-          }
-          echo "### Coverage Summary (Matrix)" > table.md
-          echo "| Node | Lines | Branches | Functions | Statements |" >> table.md
-          echo "|------|-------|----------|-----------|------------|" >> table.md
-          gen_row "22.x" node22 >> table.md
+
+          safe() { if [ -z "$1" ] || [ "$1" = "null" ]; then echo "n/a"; else echo "$1"; fi; }
+          LINES=$(safe "$LINES"); BRANCHES=$(safe "$BRANCHES"); FUNCTIONS=$(safe "$FUNCTIONS"); STATEMENTS=$(safe "$STATEMENTS");
+
+          {
+            echo "### Coverage Summary (Matrix)";
+            echo "| Node | Lines | Branches | Functions | Statements |";
+            echo "|------|-------|----------|-----------|------------|";
+            echo "| 22.x | ${LINES} | ${BRANCHES} | ${FUNCTIONS} | ${STATEMENTS} |";
+          } > table.md
+
           echo "TABLE<<EOF" >> $GITHUB_OUTPUT
           cat table.md >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
