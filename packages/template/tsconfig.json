@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    // Ensure module is NodeNext when using moduleResolution NodeNext
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "src",
+    "noEmit": true
+  },
+  "include": ["src"]
+}
