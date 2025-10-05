@@ -51,8 +51,8 @@ importers:
         specifier: 8.11.0
         version: 8.11.0(eslint@9.37.0)(typescript@5.6.3)
       autoprefixer:
-        specifier: 10.4.19
-        version: 10.4.19(postcss@8.4.49)
+        specifier: 10.4.21
+        version: 10.4.21(postcss@8.4.49)
       eslint:
         specifier: ^9.35.0
         version: 9.37.0
@@ -89,6 +89,9 @@ importers:
       globals:
         specifier: 14.0.0
         version: 14.0.0
+      husky:
+        specifier: ^9.1.6
+        version: 9.1.7
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@20.5.7)
@@ -1074,8 +1077,8 @@ packages:
     resolution: {integrity: sha512-hsU18Ae8CDTR6Kgu9DYf0EbCr/a5iGL0rytQDobUcdpYOKokk8LEjVphnXkDkgpi0wYVsqrXuP0bZxJaTqdgoA==}
     engines: {node: '>= 0.4'}
 
-  autoprefixer@10.4.19:
-    resolution: {integrity: sha512-BaENR2+zBZ8xXhM4pUaKUxlVdxZ0EZhjvbopwnXmxRUfqDmwSpC2lAi/QXvx7NRdPCo1WKEcEF6mV64si1z4Ew==}
+  autoprefixer@10.4.21:
+    resolution: {integrity: sha512-O+A6LWV5LDHSJD3LjHYoNi4VLsj/Whi7k6zG12xTYaU4cQ8oxQGckXNX8cRHK5yOZ/ppVHe0ZBXGzSV9jXdVbQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -1923,6 +1926,11 @@ packages:
   human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+
+  husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
@@ -4653,7 +4661,7 @@ snapshots:
 
   async-function@1.0.0: {}
 
-  autoprefixer@10.4.19(postcss@8.4.49):
+  autoprefixer@10.4.21(postcss@8.4.49):
     dependencies:
       browserslist: 4.26.3
       caniuse-lite: 1.0.30001747
@@ -5685,6 +5693,8 @@ snapshots:
   human-id@4.1.1: {}
 
   human-signals@2.1.0: {}
+
+  husky@9.1.7: {}
 
   iconv-lite@0.6.3:
     dependencies:
