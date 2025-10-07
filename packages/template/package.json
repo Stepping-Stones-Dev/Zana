@@ -28,7 +28,7 @@
     "test": "echo 'Tests executed at monorepo root'"
   },
   "dependencies": {
-    "zod": "^3.25.76"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "typescript": "^5.6.3"
