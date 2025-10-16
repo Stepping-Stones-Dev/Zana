@@ -1,10 +1,10 @@
 /// <reference types="jest" />
 /* eslint-env jest */
 // @jest-environment node
-import { emit, addTransport as addEventTransport, _resetEventsForTests, getEventsMetricsRegistry, setEventSampling } from './events/index.js';
-import { logger, addLogTransport, _resetLoggerForTests } from './logging/index.js';
+import { emit, addTransport as addEventTransport, _resetEventsForTests, getEventsMetricsRegistry, setEventSampling } from './events/index.ts';
+import { logger, addLogTransport, _resetLoggerForTests } from './logging/index.ts';
 
-import { configureTelemetry, shutdownTelemetry, events, logging, configureEvents, configureLogger } from './index.js';
+import { configureTelemetry, shutdownTelemetry, events, logging, configureEvents, configureLogger } from './index.ts';
 
 // Utility sleep
 const sleep = (ms: number) => new Promise(r=>setTimeout(r, ms));

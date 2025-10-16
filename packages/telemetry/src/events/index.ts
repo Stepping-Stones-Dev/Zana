@@ -2,12 +2,12 @@
 import { Counter, Registry } from 'prom-client';
 import stringify from 'safe-stable-stringify';
 
-import { buildRedactor } from '../sanitize/index.js';
+import { buildRedactor } from '../sanitize/index.ts';
 import {
   EventSchemas,
   type EventPayloadMap,
   type ZanaEventName,
-} from '../schemas.js';
+} from '../schemas.ts';
 
 // ---------------- Types -------------------------
 

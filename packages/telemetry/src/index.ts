@@ -4,17 +4,17 @@
  * Flat re-exports + optional namespace objects.
  */
 
-export * from './events/index.js';
-export * from './logging/index.js';
-export * from './sanitize/index.js';
+export * from './events/index.ts';
+export * from './logging/index.ts';
+export * from './sanitize/index.ts';
 
 // Namespaces (provide grouped access without altering original exports)
-import * as eventsNS from './events/index.js';
-import { configureEvents } from './events/index.js';
-import { drainEvents } from './events/index.js';
-import * as loggingNS from './logging/index.js';
-import { drainLogs, configureLogger } from './logging/index.js';
-import * as sanitizeNS from './sanitize/index.js';
+import * as eventsNS from './events/index.ts';
+import { configureEvents } from './events/index.ts';
+import { drainEvents } from './events/index.ts';
+import * as loggingNS from './logging/index.ts';
+import { drainLogs, configureLogger } from './logging/index.ts';
+import * as sanitizeNS from './sanitize/index.ts';
 export const events = eventsNS;
 export const logging = loggingNS;
 export const sanitize = sanitizeNS;

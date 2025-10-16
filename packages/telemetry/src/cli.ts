@@ -6,7 +6,7 @@ import { resolve } from 'node:path';
 import { Command } from 'commander';
 import stringify from 'safe-stable-stringify';
 
-import { EventSchemas, listSchemaNames } from './schemas.js';
+import { EventSchemas, listSchemaNames } from './schemas.ts';
 
 const program = new Command();
 program.name('zana-events').description('Utilities for @zana/events').version('0.1.0');

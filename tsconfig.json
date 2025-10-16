@@ -1,34 +1,25 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "nodenext",
-    "moduleResolution": "NodeNext",
-    "lib": ["ES2020"],
-    "types": ["node"],
-    "strict": true,
-    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationMap": true,
+    "noEmit": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "useDefineForClassFields": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"],
-      "@zana/events": ["packages/events/src/events/index.ts"],
-      "@zana/events/*": ["packages/events/src/*"],
-      "@zana/logging": ["packages/logging/src/index.ts"],
-      "@zana/logging/*": ["packages/logging/src/*"],
-      "@zana/sanitize": ["packages/sanitize/src/index.ts"],
-      "@zana/sanitize/*": ["packages/sanitize/src/*"]
-    },
-    "noEmit": true,
-    "allowJs": true,
-    "incremental": true,
+    "incremental": false,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "lib": ["es2022", "DOM", "DOM.Iterable"],
+    "module": "NodeNext",
+    "moduleDetection": "auto",
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
+    "strictNullChecks": true,
+    "allowImportingTsExtensions": true
   },
-  "include": ["next-env.d.ts", "packages/**/*.ts", "apps/**/*.ts", "apps/**/*.tsx", "packages/**/*.tsx"],
-  "exclude": ["node_modules", "packages/**/dist"]
+  "include": ["vite.config.ts"]
 }
-

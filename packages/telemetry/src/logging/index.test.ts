@@ -1,8 +1,8 @@
 /// <reference types="jest" />
 /* eslint-env jest */
 // @jest-environment node
-import { addTransport as addEventTransport } from '../events/index.js';
-import type { ZanaBaseEvent } from '../events/index.js';
+import { addTransport as addEventTransport } from '../events/index.ts';
+import type { ZanaBaseEvent } from '../events/index.ts';
 import {
   logger,
   addLogTransport,
@@ -14,8 +14,8 @@ import {
   type ProcessedLogEntry,
   getLoggerConfig,
   listLogTransports,
-} from '../logging/index.js';
-import { drainLogs, getPendingLogTransportsCount } from '../logging/index.js';
+} from '../logging/index.ts';
+import { drainLogs, getPendingLogTransportsCount } from '../logging/index.ts';
 
 // Simple in-memory collectors
 const collected: any[] = [];  
@@ -218,7 +218,7 @@ describe('logging', () => {
     const prev = process.env.ZANA_LOG_JSON;
     process.env.ZANA_LOG_JSON = 'true';
     jest.resetModules();
-    const mod = await import('../logging/index.js');
+    const mod = await import('../logging/index.ts');
     const before = mod.listLogTransports().length;
     expect(before).toBeGreaterThan(0);
     const spy = jest.spyOn(console, 'log').mockImplementation(() => {});
@@ -232,7 +232,7 @@ describe('logging', () => {
     const prev = process.env.ZANA_LOG_JSON;
     process.env.ZANA_LOG_JSON = 'true';
     jest.resetModules();
-    const mod = await import('../logging/index.js');
+    const mod = await import('../logging/index.ts');
     const original = console.log;
     console.log = () => {
       throw new Error('console boom');

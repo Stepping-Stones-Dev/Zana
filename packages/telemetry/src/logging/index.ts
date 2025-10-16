@@ -1,8 +1,8 @@
 
 
  
-import { emit } from '../events/index.js';
-import { buildRedactor } from '../sanitize/index.js';
+import { emit } from '../events/index.ts';
+import { buildRedactor } from '../sanitize/index.ts';
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 const LEVEL_ORDER: Record<LogLevel, number> = { debug: 10, info: 20, warn: 30, error: 40 };

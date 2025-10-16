@@ -1,0 +1,66 @@
+{
+  "name": "@zana/ui",
+  "version": "0.1.0",
+  "description": "Composite application surfaces for the Zana platform - Higher‑order, accessibility‑first UI structures powered by CSS tokens, instant theming, runtime i18n, instrumentation & onboarding hooks.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node -e \"require('fs').copyFileSync('src/styles/globals.css','dist/styles.css')\"",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "jest --config jest.config.cjs --passWithNoTests",
+    "test:watch": "jest --config jest.config.cjs --watch --passWithNoTests",
+    "test:coverage": "jest --config jest.config.cjs --coverage --passWithNoTests",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "storybook:test": "test-storybook",
+    "chromatic": "chromatic --exit-zero-on-changes"
+  },
+  "peerDependencies": {
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@heroui/react": "^2.8.5",
+    "@heroui/switch": "^2.2.24",
+    "@heroui/use-theme": "^2.1.10",
+    "@iconify/react": "^5.2.1",
+    "@storybook/react": "^9.1.10",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^9.1.10",
+    "@storybook/addon-docs": "^9.1.10",
+    "@storybook/addon-links": "^9.1.10",
+    "@storybook/addon-onboarding": "^9.1.10",
+    "@storybook/react-vite": "^9.1.10",
+    "@storybook/test-runner": "^0.23.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "chromatic": "^11.10.4",
+    "eslint-plugin-storybook": "9.1.10",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^9.1.10",
+    "storybook-addon-test-codegen": "^2.0.1",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.8"
+  }
+}

@@ -1,7 +1,7 @@
 /// <reference types="jest" />
 /* eslint-env jest */
 // @jest-environment node
-import { buildRedactor } from '../sanitize/index.js';
+import { buildRedactor } from '../sanitize/index.ts';
 
 describe('sanitize buildRedactor', () => {
   test('redacts keys case-insensitively and leaves others', () => {
@@ -87,7 +87,7 @@ describe('sanitize buildRedactor', () => {
     jest.doMock('fast-redact', () => () => {
       return () => { throw new Error('fr crash'); };
     });
-  const mod = await import('../sanitize/index.js');
+  const mod = await import('../sanitize/index.ts');
     const errs: unknown[] = [];
     const r = mod.buildRedactor({ redactKeys: new Set(['secret']), patterns: [], maxDepth: 3, onRedactionError: (e)=>errs.push(e) });
     r.redact({ secret: 'value' });

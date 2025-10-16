@@ -17,7 +17,7 @@ import {
     drainEvents,
     serializeEvent,
     listEventDefinitions
-} from './index.js';
+} from './index.ts';
 
 describe('emit structure', () => {
     it('emits a structured session.issued event with expected shape', () => {
@@ -447,10 +447,10 @@ describe('dev console branch production mode', () => {
         process.env.NODE_ENV = ORIGINAL_ENV;
     });
     test('importing events in production does not throw', () => {
-        const key = require.resolve('./index.js');
+        const key = require.resolve('./index.ts');
         delete require.cache[key];
         expect(() => {
-            require('./index.js');
+            require('./index.ts');
         }).not.toThrow();
     });
 });
@@ -580,7 +580,7 @@ describe('primitive sanitize & drainEvents secondary timeout branch', () => {
 
     test('sanitizePayload early-return for null and undefined', () => {
         _resetEventsForTests();
-        const { _sanitizePayloadForTests } = require('./index.js');
+        const { _sanitizePayloadForTests } = require('./index.ts');
         expect(_sanitizePayloadForTests(null)).toBeNull();
         expect(_sanitizePayloadForTests(undefined)).toBeUndefined();
     });

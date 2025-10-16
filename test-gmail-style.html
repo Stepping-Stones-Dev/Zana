@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail-style SideBar Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Gmail-style sidebar test */
+        .sidebar {
+            width: 3.5rem; /* 56px - collapsed width */
+            transition: width 0.3s ease-in-out;
+        }
+        .sidebar:hover {
+            width: 16rem; /* 256px - expanded width */
+        }
+        
+        .sidebar-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
+        }
+        
+        .sidebar:hover .sidebar-text {
+            opacity: 1;
+            width: auto;
+        }
+        
+        .sidebar-icon {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Gmail-style Sidebar -->
+        <aside class="sidebar flex flex-col bg-white border-r border-gray-200 shadow-sm">
+            <!-- Menu Items -->
+            <div class="flex-1 py-2 px-2 overflow-hidden">
+                <div class="space-y-1">
+                    <!-- Dashboard Item -->
+                    <a href="#" class="flex items-center rounded-md transition-all duration-200 cursor-pointer hover:bg-gray-100 text-gray-700 w-10 h-10 justify-center p-0 mx-auto sidebar:w-full sidebar:px-3 sidebar:justify-start">
+                        <span class="sidebar-icon flex items-center justify-center">
+                            📊
+                        </span>
+                        <span class="sidebar-text flex-1 truncate text-sm ml-3">Dashboard</span>
+                    </a>
+                    
+                    <!-- Settings Item -->
+                    <button class="flex items-center rounded-md transition-all duration-200 cursor-pointer hover:bg-gray-100 text-gray-700 w-10 h-10 justify-center p-0 mx-auto sidebar:w-full sidebar:px-3 sidebar:justify-start">
+                        <span class="sidebar-icon flex items-center justify-center">
+                            ⚙️
+                        </span>
+                        <span class="sidebar-text flex-1 truncate text-sm ml-3">Settings</span>
+                    </button>
+                    
+                    <!-- Mail Item -->
+                    <a href="#" class="flex items-center rounded-md transition-all duration-200 cursor-pointer hover:bg-gray-100 text-gray-700 w-10 h-10 justify-center p-0 mx-auto sidebar:w-full sidebar:px-3 sidebar:justify-start">
+                        <span class="sidebar-icon flex items-center justify-center">
+                            📧
+                        </span>
+                        <span class="sidebar-text flex-1 truncate text-sm ml-3">Mail</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Bottom Section -->
+            <div class="mt-auto">
+                <!-- User Profile -->
+                <div class="border-t border-gray-200 p-2">
+                    <div class="flex items-center transition-all duration-200 cursor-pointer hover:bg-gray-100 rounded-md w-10 h-10 justify-center p-1 mx-auto">
+                        <div class="sidebar-icon">
+                            👤
+                        </div>
+                        <div class="sidebar-text flex-1 ml-3">
+                            <div class="text-sm font-medium">John Doe</div>
+                            <div class="text-xs text-gray-500">Admin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Powered by Zana -->
+                <div class="px-3 py-2 border-t border-gray-200">
+                    <p class="sidebar-text text-xs text-gray-500 text-center">
+                        powered by <span class="font-semibold text-blue-600">zana</span>
+                    </p>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-4">Gmail-style SideBar Test</h1>
+            <p class="text-gray-600 mb-4">Hover over the sidebar to see it expand like Gmail!</p>
+            <ul class="text-sm text-gray-600 space-y-2">
+                <li>✅ Icons visible when collapsed</li>
+                <li>✅ Text hidden when collapsed</li>
+                <li>✅ Smooth hover expansion</li>
+                <li>✅ No physical toggle button</li>
+                <li>✅ "Powered by Zana" at bottom</li>
+            </ul>
+        </main>
+    </div>
+</body>
+</html>
