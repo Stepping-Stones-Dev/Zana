@@ -38,7 +38,7 @@ jobs:
         id: hash
         run: echo "hash=$(sha256sum sbom.json | cut -d ' ' -f1)" >> $GITHUB_OUTPUT
       - name: Upload SBOM artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: sbom
           path: sbom.json
@@ -68,7 +68,7 @@ jobs:
           echo "No verified secrets detected"
       - name: Upload TruffleHog Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: trufflehog-results
           path: trufflehog.json
@@ -95,7 +95,7 @@ jobs:
           pnpm audit --json > audit.json || true
           # Fail only if high/critical present (handled by script)
           node scripts/pnpm-audit-check.cjs
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: audit-report
           path: audit.json
@@ -117,7 +117,7 @@ jobs:
       - name: License Policy
         run: pnpm check:licenses > license-report.txt && npx license-checker --json > license-report.json || true
       - name: Upload License Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: license-report
           path: |
