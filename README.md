@@ -1,26 +1,82 @@
-# Zana Monorepo
+# Zana — School Management System
 
-[![CI](https://github.com/Stepping-Stones-Dev/sam/actions/workflows/ci.yml/badge.svg)](https://github.com/Stepping-Stones-Dev/sam/actions/workflows/ci.yml)
-[![Security Pipeline](https://github.com/Stepping-Stones-Dev/sam/actions/workflows/security.yml/badge.svg)](https://github.com/Stepping-Stones-Dev/sam/actions/workflows/security.yml)
+A minimal, full-stack School Management System built as a pnpm + TypeScript monorepo.
 
-Initial scaffolding per Architecture Blueprint Section 27 (Kickoff).
+## What’s implemented
 
-Current highlights:
-- Unified telemetry package (`@zana/telemetry`) providing events, logging, sanitization utilities.
-- 100% test coverage enforced via Jest thresholds.
-- Consolidated security pipeline (OSV, CodeQL, Semgrep, Gitleaks, license policy, SBOM diff, pnpm audit, optional Trivy).
-- CI targets Node 22+ only (dropped 18/20) with coverage comment.
+- Students: create/list/delete
+- Classes: create/list/delete
+- Enrollments: assign a student to a class
+- Attendance: mark daily attendance per enrollment (upsert by date)
+- Teachers: create/list/delete
+- Subjects: create/list/delete
+- Gradebook: assign subjects to classes, create assessments, enter grades
+- Auth: JWT login + role-based API access (Admin/Staff/Teacher)
 
-## Quick Start
+## Tech
+
+- API: Fastify + Prisma (SQLite)
+- Web: Vite + React + React Router + TanStack Query
+- Shared validation/types: Zod (`packages/shared`)
+
+## Prerequisites
+
+- Node `>=20.11` (this repo works great on Node 22)
+- pnpm `9.x`
+
+## Getting started
+
+1) Install deps:
+
 ```bash
 pnpm install
-pnpm build --filter=@zana/events --filter=@zana/logging
 ```
 
-## Packages
-- `@zana/telemetry`: Unified events + logging + sanitize engine.
+2) Create the API database and Prisma client:
 
-See `docs/SECURITY_PIPELINE.md` for security process and `packages/telemetry/README.md` for usage details.
+```bash
+pnpm db:generate
+pnpm db:migrate
+pnpm db:seed
+```
 
-## Next Steps
-Refer to `docs/SECURITY_PIPELINE.md` and `Zana.md` Section 27.9 for strategic tasks.
+Default seeded admin (override via `ADMIN_EMAIL` / `ADMIN_PASSWORD` in `apps/api/.env`):
+
+- Email: `admin@zana.local`
+- Password: `ChangeMe123!`
+
+3) Run the API and web apps (two terminals):
+
+Terminal A:
+```bash
+pnpm dev:api
+```
+
+Terminal B:
+```bash
+pnpm dev:web
+```
+
+- API: `http://localhost:4000/health`
+- Web: `http://localhost:5173/`
+
+## Environment variables
+
+- API example: `apps/api/.env.example`
+- Web example: `apps/web/.env.example`
+
+By default, the web app uses `http://localhost:4000`.
+
+## Workspace layout
+
+- `apps/api` — Fastify API + Prisma schema/migrations
+- `apps/web` — React UI
+- `packages/shared` — shared Zod schemas + types
+
+## Quality checks
+
+```bash
+pnpm typecheck
+pnpm lint
+pnpm build
+```
